@@ -17,7 +17,7 @@ public class Board {
     }
     
     public static boolean isInside(Position position){
-        
+       return (position.getRow() <= squares.length && position.getColumn() <= squares[0].length); 
     }
     public static Square getSquare(Position position){
         
