@@ -21,8 +21,9 @@ public class Player {
     public Piece getPieces() {
         return pieces;
     }
-    
-    public static void addPiece(Piece piece){
-        this.pieces = new Piece(piece);
+
+    public void addPiece(Piece piece) {
+        this.pieces.getRank();
+        this.pieces.getColor();
     }
 }

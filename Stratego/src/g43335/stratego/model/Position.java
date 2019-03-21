@@ -5,6 +5,7 @@ package g43335.stratego.model;
  * @author franc
  */
 public class Position {
+
     private int row;
     private int column;
 
@@ -20,5 +21,5 @@ public class Position {
     public int getColumn() {
         return column;
     }
-    
+
 }

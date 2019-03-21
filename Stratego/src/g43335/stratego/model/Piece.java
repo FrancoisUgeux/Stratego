@@ -5,6 +5,7 @@ package g43335.stratego.model;
  * @author franc
  */
 public class Piece {
+
     private int rank;
     private PlayerColor color;
 

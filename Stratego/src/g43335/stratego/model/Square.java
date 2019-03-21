@@ -5,7 +5,12 @@ package g43335.stratego.model;
  * @author franc
  */
 public class Square {
+
     private Piece piece;
+
+    public Square() {
+        this.piece = null;
+    }
 
     public Square(Piece piece) {
         this.piece = piece;
@@ -14,8 +19,8 @@ public class Square {
     public Piece getPiece() {
         return piece;
     }
-    
-    public static void put(Piece piece){
-        
+
+    public static void put(Piece piece) {
+
     }
 }
