@@ -17,16 +17,21 @@ public class Board {
     }
 
     public boolean isInside(Position position) {
-        return (position.getRow() <= Square.length && position.getColumn()
-                <= Square[0].length);
+        return(position.getRow() <= squares.length
+                && position.getRow() >= 0
+                && position.getColumn() <= squares.length
+                && position.getColumn() >= 0);
     }
 
     public Square getSquare(Position position) {
-        return;
+        if (!isInside(position)) {
+            throw new IllegalArgumentException("out of board");
+        }
+        return this.squares[position.getRow()][position.getColumn()];
     }
 
     public void put(Piece piece, Position position) {
-
+        this.squares[position.getRow()][position.getColumn()] = piece;
     }
 
 }
