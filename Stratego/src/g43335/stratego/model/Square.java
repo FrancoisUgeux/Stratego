@@ -21,6 +21,9 @@ public class Square {
     }
 
     public void put(Piece piece) {
+        if(piece == null){
+            throw new IllegalArgumentException("piece cannot be null");
+        }
         this.piece = new Piece(piece.getRank(), piece.getColor());
     }
 }

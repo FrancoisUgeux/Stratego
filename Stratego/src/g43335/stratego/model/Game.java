@@ -15,6 +15,7 @@ public class Game implements Model {
     // private Board board;
     private Player current;
     private Player opponent;
+    private Game game;
 
     public Game(Player current, Player opponent) {
         this.pieces = new ArrayList<>();
@@ -26,9 +27,8 @@ public class Game implements Model {
 
     @Override
     public void initialize() {
-        Position position = new Position(0, 1);
         Board board = new Board();
-        this board.put(PlayerColor.RED, 0(),0,1());
+        this board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
     }
 
     @Override

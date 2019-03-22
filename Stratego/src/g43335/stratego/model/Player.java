@@ -13,6 +13,9 @@ public class Player {
     private Piece pieces;
 
     public Player(PlayerColor color) {
+        if(color == null){
+            throw new IllegalArgumentException("Color cannot be null");
+        }
         this.color = color;
         this.pieces = null;
         List<Piece> list = new ArrayList<>();

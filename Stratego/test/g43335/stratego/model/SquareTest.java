@@ -9,24 +9,24 @@ import org.junit.Test;
 
 public class SquareTest {
 
-    @Test
-    public void testIsFreeTrue() {
-        System.out.println("testIsFreeTrue");
-        Square instance = new Square();
-        boolean expResult = true;
-        boolean result = instance.isFree();
-        assertEquals(expResult, result);
-    }
+  //  @Test
+  //  public void testIsFreeTrue() {
+  //      System.out.println("testIsFreeTrue");
+  //      Square instance = new Square();
+  //      boolean expResult = true;
+  //      boolean result = instance.isFree();
+  //      assertEquals(expResult, result);
+  //  }
 
-    @Test
-    public void testIsFreeFalse() {
-        System.out.println("testIsFreeFalse");
-        Square instance = new Square();
-        instance.put(new Piece(4, PlayerColor.BLUE));
-        boolean expResult = false;
-        boolean result = instance.isFree();
-        assertEquals(expResult, result);
-    }
+  //  @Test
+  //  public void testIsFreeFalse() {
+  //      System.out.println("testIsFreeFalse");
+  //      Square instance = new Square();
+  //      instance.put(new Piece(4, PlayerColor.BLUE));
+  //      boolean expResult = false;
+  //      boolean result = instance.isFree();
+  //     assertEquals(expResult, result);
+  //  }
 
     @Test(expected = NullPointerException.class)
     public void testPutWhenPieceIsNull() {
