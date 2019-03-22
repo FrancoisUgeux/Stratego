@@ -1,37 +1,51 @@
 package g43335.stratego.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author franc
  */
 public class Game implements Model {
 
-    private Board board;
+    private List<Piece> pieces;
+    //private Position position;
+    //private Piece piece;
+    // private Board board;
     private Player current;
     private Player opponent;
 
     public Game(Player current, Player opponent) {
-        Piece piece = new Piece();
-        this.current = new Player(PlayerColor.RED,pieces);
-       // this.current.addPiece(new Player(PlayerColor.RED));
+        this.pieces = new ArrayList<>();
+        this.current = new Player(PlayerColor.RED);
+        this.opponent = new Player(PlayerColor.BLUE);
+        // this.current.addPiece(new Player(PlayerColor.RED));
         //this.opponent.addPiece(new Player(PlayerColor.BLUE));
     }
 
-    public void initialise() {
-        Position position = new Position(0,1);
-        Piece piece = new Piece()
-        Board board = new Board(piece, position);
+    @Override
+    public void initialize() {
+        Position position = new Position(0, 1);
+        Board board = new Board();
+        this board.put(PlayerColor.RED, 0(),0,1());
     }
 
+    @Override
     public void start() {
-        if()
+        if ( && isOver) {
+            throw new IllegalArgumentException
+            ("board not initialized or game is over");
+        }
     }
 
+    @Override
     public boolean isOver() {
-
+        return false;
     }
 
+    @Override
     public Square[][] getBoard() {
-
+        return this.getBoard();
     }
 }

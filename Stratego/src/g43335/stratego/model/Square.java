@@ -21,6 +21,6 @@ public class Square {
     }
 
     public void put(Piece piece) {
-        this.piece = new Piece(piece.getRank(),piece.getColor());
+        this.piece = new Piece(piece.getRank(), piece.getColor());
     }
 }

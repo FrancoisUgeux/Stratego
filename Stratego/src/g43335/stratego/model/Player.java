@@ -30,5 +30,5 @@ public class Player {
         this.pieces.getRank();
         this.pieces.getColor();
     }
-    
+
 }
