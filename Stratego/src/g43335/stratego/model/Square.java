@@ -20,7 +20,7 @@ public class Square {
         return piece;
     }
 
-    public static void put(Piece piece) {
-
+    public void put(Piece piece) {
+        this.piece = new Piece(piece.getRank(),piece.getColor());
     }
 }

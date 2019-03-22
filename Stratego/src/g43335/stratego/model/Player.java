@@ -1,5 +1,8 @@
 package g43335.stratego.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author franc
@@ -12,6 +15,7 @@ public class Player {
     public Player(PlayerColor color) {
         this.color = color;
         this.pieces = null;
+        List<Piece> list = new ArrayList<>();
     }
 
     public PlayerColor getColor() {
@@ -26,4 +30,5 @@ public class Player {
         this.pieces.getRank();
         this.pieces.getColor();
     }
+    
 }

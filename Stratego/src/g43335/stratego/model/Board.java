@@ -31,6 +31,9 @@ public class Board {
     }
 
     public void put(Piece piece, Position position) {
+        if(!isInside){
+            throw new IllegalArgumentException("out of board");
+        }
         this.squares[position.getRow()][position.getColumn()] = piece;
     }
 
