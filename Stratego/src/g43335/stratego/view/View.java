@@ -44,7 +44,30 @@ public class View {
     }
 
     public void displayBoard(Square[][] squares) {
-        System.out.println(squares);
+        System.out.println();
+        System.out.println("  col# || | 00 | | 01 | | 02 | | 03 |");
+        System.out.println("======================================");
+        System.out.println("row#00 || | "
+                + ANSI_BLACK_BACKGROUND + squares[0][0] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[1][0] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[2][0] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[3][0] + ANSI_RESET + " |");
+        System.out.println("row#00 || | "
+                + ANSI_BLACK_BACKGROUND + squares[0][1] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[1][1] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[2][1] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[3][1] + ANSI_RESET + " |");
+        System.out.println("row#00 || | "
+                + ANSI_BLACK_BACKGROUND + squares[0][2] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[1][2] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[2][2] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[3][2] + ANSI_RESET + " |");
+        System.out.println("row#00 || | "
+                + ANSI_BLACK_BACKGROUND + squares[0][3] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[1][3] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[2][3] + ANSI_RESET + " | | "
+                + ANSI_BLACK_BACKGROUND + squares[3][3] + ANSI_RESET + " |");
+        System.out.println();
     }
 
     public void displayOver() {

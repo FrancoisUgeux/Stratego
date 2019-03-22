@@ -6,11 +6,25 @@ package g43335.stratego.model;
  */
 public interface Model {
 
+    /**
+     *
+     */
     void initialize();
 
+    /**
+     *
+     */
     void start();
 
+    /**
+     *
+     * @return
+     */
     boolean isOver();
 
+    /**
+     *
+     * @return
+     */
     Square[][] getBoard();
 }

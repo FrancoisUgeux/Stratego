@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class assemble all the other class and initialize the different data
  *
- * @author franc
+ * @author G43335
  */
 public class Game implements Model {
 
@@ -17,6 +18,11 @@ public class Game implements Model {
     private Player opponent;
     private Game game;
 
+    /**
+     *
+     * @param current is the currently playing character
+     * @param opponent is the other player
+     */
     public Game(Player current, Player opponent) {
         this.pieces = new ArrayList<>();
         this.current = new Player(PlayerColor.RED);
@@ -25,25 +31,38 @@ public class Game implements Model {
         //this.opponent.addPiece(new Player(PlayerColor.BLUE));
     }
 
+    /**
+     *
+     */
     @Override
     public void initialize() {
         Board board = new Board();
         this board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
     }
 
+    /**
+     *
+     */
     @Override
     public void start() {
         if ( && isOver) {
-            throw new IllegalArgumentException
-            ("board not initialized or game is over");
+            throw new IllegalArgumentException("board not initialized or game is over");
         }
     }
 
+    /**
+     *
+     * @return true if the game has ended
+     */
     @Override
     public boolean isOver() {
         return false;
     }
 
+    /**
+     *
+     * @return the current status of the board
+     */
     @Override
     public Square[][] getBoard() {
         return this.getBoard();
