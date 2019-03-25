@@ -2,6 +2,7 @@ package g43335.stratego.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class represent a player, each player has a color and set of pieces
@@ -26,6 +27,35 @@ public class Player {
         List<Piece> list = new ArrayList<>();
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.color);
+        hash = 67 * hash + Objects.hashCode(this.pieces);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        if (this.color != other.color) {
+            return false;
+        }
+        if (!Objects.equals(this.pieces, other.pieces)) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      *
      * @return the color of the player
@@ -46,9 +76,8 @@ public class Player {
      *
      * @param piece is the piece to add in the player's piece set
      */
-    public void addPiece(Piece piece) {
-        this.pieces.getRank();
-        this.pieces.getColor();
+    public void addPiece(Piece pieces) {
+        this.pieces = pieces;
     }
 
 }

@@ -1,7 +1,7 @@
 package g43335.stratego.model;
 
 /**
- * Contains the two possible colors for two players of the game.
+ * Contains the two possible colors for the two players of the game.
  *
  * @author G43335
  */

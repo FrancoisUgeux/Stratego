@@ -1,5 +1,7 @@
 package g43335.stratego.model;
 
+import java.util.Objects;
+
 /**
  * This class represent the case of the game board
  *
@@ -7,13 +9,14 @@ package g43335.stratego.model;
  */
 public class Square {
 
-    private Piece piece;
+    private Piece pieces;
+
 
     /**
      * constructor that set a case to null if there is no piece on it
      */
     public Square() {
-        this.piece = null;
+        this.pieces = null;
     }
 
     /**
@@ -21,7 +24,30 @@ public class Square {
      * @param piece is the piece to place on a case
      */
     public Square(Piece piece) {
-        this.piece = piece;
+        this.pieces = piece;
+    }
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.pieces);
+        return hash;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Square other = (Square) obj;
+        if (!Objects.equals(this.pieces, other.pieces)) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -29,17 +55,17 @@ public class Square {
      * @return
      */
     public Piece getPiece() {
-        return piece;
+        return pieces;
     }
 
     /**
      *
      * @param piece is a piece to add on the current case
      */
-    public void put(Piece piece) {
-        if (piece == null) {
-            throw new IllegalArgumentException("piece cannot be null");
+    public void put(Piece pieces) {
+        if (pieces == null) {
+            throw new NullPointerException("piece cannot be null");
         }
-        this.piece = piece;   //new Piece(piece.getRank(), piece.getColor());
+        this.pieces = pieces;   //new Piece(piece.getRank(), piece.getColor());
     }
 }

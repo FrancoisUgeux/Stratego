@@ -1,5 +1,7 @@
 package g43335.stratego.model;
 
+import java.util.Objects;
+
 /**
  * This class create the pieces of the game
  *
@@ -21,6 +23,35 @@ public class Piece {
         }
         this.rank = rank;
         this.color = color;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + this.rank;
+        hash = 71 * hash + Objects.hashCode(this.color);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Piece other = (Piece) obj;
+        if (this.rank != other.rank) {
+            return false;
+        }
+        if (this.color != other.color) {
+            return false;
+        }
+        return true;
     }
 
     /**
