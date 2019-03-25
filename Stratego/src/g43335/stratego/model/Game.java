@@ -17,6 +17,7 @@ public class Game implements Model {
     private Player current;
     private Player opponent;
     private Game game;
+    private Board board;
 
     /**
      *
@@ -37,7 +38,7 @@ public class Game implements Model {
     @Override
     public void initialize() {
         Board board = new Board();
-        this board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
+        this.board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
     }
 
     /**
@@ -45,7 +46,7 @@ public class Game implements Model {
      */
     @Override
     public void start() {
-        if ( && isOver) {
+        if (board == null) {
             throw new IllegalArgumentException("board not initialized or game is over");
         }
     }
@@ -65,6 +66,6 @@ public class Game implements Model {
      */
     @Override
     public Square[][] getBoard() {
-        return this.getBoard();
+        return this.board.getSquares();
     }
 }

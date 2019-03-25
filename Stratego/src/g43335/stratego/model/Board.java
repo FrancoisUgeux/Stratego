@@ -58,7 +58,10 @@ public class Board {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        this.squares[position.getRow()][position.getColumn()] = piece;
+        if(piece == null){
+            throw new NullPointerException("piece cannot be null");
+        }
+        this.squares[position.getRow()][position.getColumn()].put(piece);
     }
 
 }
