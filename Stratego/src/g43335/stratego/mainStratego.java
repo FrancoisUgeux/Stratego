@@ -13,6 +13,6 @@ public class mainStratego {
         Game game = new game;
         View view = new view;
         Controller controller = new controller(game, view);
-        game.start();
+        controller.startgame();
     }
 }

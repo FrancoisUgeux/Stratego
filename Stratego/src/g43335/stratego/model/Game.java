@@ -18,8 +18,8 @@ public class Game implements Model {
     private Board board;
 
     public Game(Player current, Player opponent, Board board) {
-        this.current = current;
-        this.opponent = opponent;
+        this.current = new Player(PlayerColor.RED);
+        this.opponent = new Player(PlayerColor.BLUE);
     }
 
     /**
@@ -28,7 +28,7 @@ public class Game implements Model {
      * @param opponent is the other player
      */
     /**
-     *
+     * 
      */
     @Override
     public void initialize() {

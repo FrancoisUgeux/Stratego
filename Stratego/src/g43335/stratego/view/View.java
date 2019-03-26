@@ -13,6 +13,7 @@ public class View {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     private Scanner in;
 
@@ -71,6 +72,7 @@ public class View {
     }
 
     public void displayOver() {
-        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "GAME OVER!");
+        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED
+                + "GAME OVER!" + ANSI_RESET);
     }
 }
