@@ -11,7 +11,6 @@ public class Square {
 
     private Piece pieces;
 
-
     /**
      * constructor that set a case to null if there is no piece on it
      */
@@ -23,15 +22,17 @@ public class Square {
      *
      * @param piece is the piece to place on a case
      */
-    public Square(Piece piece) {
-        this.pieces = piece;
-    }
+    //public Square(Piece piece) {
+    //    this.pieces = piece;
+    //}
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 17 * hash + Objects.hashCode(this.pieces);
         return hash;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -62,10 +63,13 @@ public class Square {
      *
      * @param piece is a piece to add on the current case
      */
-    public void put(Piece pieces) {
-        if (pieces == null) {
+    public void put(Piece piece) {
+        if (piece == null) {
             throw new NullPointerException("piece cannot be null");
         }
-        this.pieces = pieces;   //new Piece(piece.getRank(), piece.getColor());
+        if (this.pieces != null) {
+            throw new IllegalStateException("the case must be empty");
+        }
+        this.pieces = piece;  
     }
 }

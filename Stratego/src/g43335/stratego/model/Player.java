@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Player {
 
     private PlayerColor color;
-    private Piece pieces;
+    private ArrayList<Piece> pieces;
 
     /**
      *
@@ -20,11 +20,10 @@ public class Player {
      */
     public Player(PlayerColor color) {
         if (color == null) {
-            throw new IllegalArgumentException("Color cannot be null");
+            throw new NullPointerException("Color cannot be null");
         }
         this.color = color;
-        this.pieces = null;
-        List<Piece> list = new ArrayList<>();
+        this.pieces = new ArrayList<>();
     }
 
     @Override
@@ -68,7 +67,7 @@ public class Player {
      *
      * @return the pieces of a player
      */
-    public Piece getPieces() {
+    public ArrayList<Piece> getPieces() {
         return pieces;
     }
 
@@ -76,8 +75,8 @@ public class Player {
      *
      * @param piece is the piece to add in the player's piece set
      */
-    public void addPiece(Piece pieces) {
-        this.pieces = pieces;
+    public void addPiece(Piece piece) {
+        pieces.add(piece);
     }
 
 }

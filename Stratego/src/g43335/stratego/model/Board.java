@@ -30,6 +30,9 @@ public class Board {
      * @return true if the position is in the game board
      */
     public boolean isInside(Position position) {
+        if(position == null){
+            throw new NullPointerException("position cannot be null");
+        }
         return (position.getRow() < squares.length
                 && position.getRow() >= 0
                 && position.getColumn() < squares[0].length
@@ -42,6 +45,9 @@ public class Board {
      * @return the value on the position
      */
     public Square getSquare(Position position) {
+        if (position == null) {
+            throw new NullPointerException("position cannot be null");
+        }
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
@@ -58,7 +64,7 @@ public class Board {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        if(piece == null){
+        if (piece == null) {
             throw new NullPointerException("piece cannot be null");
         }
         this.squares[position.getRow()][position.getColumn()].put(piece);
