@@ -21,7 +21,7 @@ public class View {
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     private Scanner in;
 
-    public View(Scanner in) {
+    public View() {
         this.in = new Scanner(System.in);
     }
 
@@ -36,8 +36,7 @@ public class View {
     }
 
     public void displayError(String message) {
-        System.out.println(ANSI_RED_BACKGROUND + ANSI_BLACK
-                + message + ANSI_RESET);
+        System.out.println(ANSI_RED_BACKGROUND + message + ANSI_RESET);
     }
 
     public void displayHelp() {
@@ -75,6 +74,7 @@ public class View {
                     //getcolor = square[i][j].getcolor 
                     System.out.print(" | " + ColorPiece + " | ");
                 }
+                System.out.println();
             }
         }
     }

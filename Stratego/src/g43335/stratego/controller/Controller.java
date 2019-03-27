@@ -22,10 +22,10 @@ public class Controller {
         game.initialize();
         view.initialize();
     }
-    public void startgame(){
+    public void startGame(){
         view.displayHelp();
         while(!game.isOver()){
-            //view.displayBoard(squares);
+            view.displayBoard(game.getBoard());
             view.askCommand();
             if("quit".equals(view.askCommand())){
                 
