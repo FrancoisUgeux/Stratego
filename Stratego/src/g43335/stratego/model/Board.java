@@ -13,7 +13,14 @@ public class Board {
      * Initialize the board to 5 row and 4 column
      */
     public Board() {
-        this.squares = new Square[5][4];
+        int rows = 5;
+        int columns = 4;
+        this.squares = new Square[rows][columns];
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<columns;j++){
+                this.squares[i][j] = new Square();
+            }
+        }
     }
 
     /**

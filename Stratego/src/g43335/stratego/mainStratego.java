@@ -10,9 +10,11 @@ import g43335.stratego.view.View;
  */
 public class mainStratego {
     public static void main(String[] args) {
+        /*
         Game game = new game;
         View view = new view;
         Controller controller = new controller(game, view);
         controller.startgame();
+        */
     }
 }

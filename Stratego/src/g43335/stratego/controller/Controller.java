@@ -25,7 +25,7 @@ public class Controller {
     public void startgame(){
         view.displayHelp();
         while(!game.isOver()){
-            view.displayBoard(squares);
+            //view.displayBoard(squares);
             view.askCommand();
             if("quit".equals(view.askCommand())){
                 

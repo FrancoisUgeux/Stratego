@@ -17,7 +17,7 @@ public class Game implements Model {
     private Player opponent;
     private Board board;
 
-    public Game(Player current, Player opponent, Board board) {
+    public Game() {
         this.current = new Player(PlayerColor.RED);
         this.opponent = new Player(PlayerColor.BLUE);
     }
@@ -49,7 +49,7 @@ public class Game implements Model {
     @Override
     public void start() {
         if (board == null) {
-            throw new IllegalArgumentException("board not initialized or game is over");
+            throw new IllegalStateException("board not initialized or game is over");
         }
     }
 
