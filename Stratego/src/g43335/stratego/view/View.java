@@ -17,7 +17,6 @@ public class View {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     private final Scanner in;
@@ -33,16 +32,15 @@ public class View {
      * Display a welcome message.
      */
     public void initialize() {
-        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_BLUE
-                + "Welcome to Stratego" + ANSI_RESET);
+        System.out.println(ANSI_BLUE + "Welcome to Stratego" + ANSI_RESET);
     }
 
     /**
      * Display a goodbye message.
      */
     public void quit() {
-        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_BLUE
-                + "See you soon for a new game" + ANSI_RESET);
+        System.out.println(ANSI_BLUE + "See you soon for a new game"
+                + ANSI_RESET);
     }
 
     /**
@@ -80,7 +78,6 @@ public class View {
      */
     public void displayBoard(Square[][] squares) {
         String ColorPiece;
-        System.out.println();
         System.out.println("  col# ||  |00|  |01|  |02|  |03|");
         System.out.println("======================================");
         for (int i = 0; i < squares.length; i++) {
@@ -108,7 +105,6 @@ public class View {
      * Display a message when the game is over.
      */
     public void displayOver() {
-        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED
-                + "GAME OVER!" + ANSI_RESET);
+        System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
     }
 }
