@@ -1,30 +1,33 @@
 package g43335.stratego.model;
 
 /**
+ * Model of Stratego
  *
- * @author franc
+ * @author G43335
  */
 public interface Model {
 
     /**
-     *
+     * Initialize the stratego game with a default board.
      */
     void initialize();
 
     /**
-     *
+     * Check if a match can start.
      */
     void start();
 
     /**
+     * Declares if it's the end of the game.
      *
-     * @return
+     * @return true if it's the end of the game.
      */
     boolean isOver();
 
     /**
+     * Return the board.
      *
-     * @return
+     * @return the board.
      */
     Square[][] getBoard();
 }

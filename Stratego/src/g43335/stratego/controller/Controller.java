@@ -4,8 +4,9 @@ import g43335.stratego.model.Model;
 import g43335.stratego.view.View;
 
 /**
- * This class is used to run the game and the view together
- * @author franc
+ * This class is used to run the game and the view together.
+ *
+ * @author g43335
  */
 public class Controller {
 
@@ -13,9 +14,11 @@ public class Controller {
     private View view;
 
     /**
+     * assigned a game and view for this instance of controller.
      *
-     * @param game the current instance of the Game
-     * @param view the current instance of the View
+     * @param game the current instance of the Game.
+     * @param view the current instance of the View.
+     * @throws NullPointerException if the game or the view is null.
      */
     public Controller(Model game, View view) {
         if (game == null || view == null) {
@@ -26,7 +29,7 @@ public class Controller {
     }
 
     /**
-     *Initialize the game and the view
+     * Initialize the game and the view.
      */
     public void initialize() {
         game.initialize();
@@ -34,7 +37,8 @@ public class Controller {
     }
 
     /**
-     * start the game and call view to display the different message and the board
+     * start the game and call view to display the different message and the
+     * board.
      */
     public void startGame() {
         view.displayHelp();

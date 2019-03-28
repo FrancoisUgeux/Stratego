@@ -5,8 +5,9 @@ import g43335.stratego.model.Square;
 import java.util.Scanner;
 
 /**
+ * This class manage all the display for a match.
  *
- * @author franc
+ * @author g43335
  */
 public class View {
 
@@ -19,37 +20,64 @@ public class View {
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    private Scanner in;
+    private final Scanner in;
 
+    /**
+     * Initialize a scanner for the keyboard.
+     */
     public View() {
         this.in = new Scanner(System.in);
     }
 
+    /**
+     * Display a welcome message.
+     */
     public void initialize() {
         System.out.println(ANSI_BLACK_BACKGROUND + ANSI_BLUE
                 + "Welcome to Stratego" + ANSI_RESET);
     }
 
+    /**
+     * Display a goodbye message.
+     */
     public void quit() {
         System.out.println(ANSI_BLACK_BACKGROUND + ANSI_BLUE
                 + "See you soon for a new game" + ANSI_RESET);
     }
 
+    /**
+     * Display an error message.
+     *
+     * @param message an error message.
+     */
     public void displayError(String message) {
         System.out.println(ANSI_RED_BACKGROUND + message + ANSI_RESET);
     }
 
+    /**
+     * Display the different available command.
+     */
     public void displayHelp() {
         System.out.println("available command :");
         System.out.println("quit: quit the game");
     }
 
+    /**
+     * Ask to enter a command and return this command.
+     *
+     * @return the inputed command as a String.
+     */
     public String askCommand() {
         System.out.println("Please enter your command");
         String command = in.nextLine();
         return command;
     }
 
+    /**
+     * Display the game board.
+     *
+     * @param squares represent each case of the board.
+     */
     public void displayBoard(Square[][] squares) {
         String ColorPiece;
         System.out.println();
@@ -57,12 +85,12 @@ public class View {
         System.out.println("======================================");
         for (int i = 0; i < squares.length; i++) {
             System.out.print("row#0" + i + " || ");
-            for (int j = 0; j < squares[i].length; j++) {
-                if (squares[i][j].getPiece() == null) {
+            for (Square square : squares[i]) {
+                if (square.getPiece() == null) {
                     System.out.print(" |" + ANSI_WHITE_BACKGROUND
                             + "  " + ANSI_RESET + "| ");
                 } else {
-                    if (squares[i][j].getPiece().getColor() == PlayerColor.BLUE) {
+                    if (square.getPiece().getColor() == PlayerColor.BLUE) {
                         ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE
                                 + "PE" + ANSI_RESET;
                     } else {
@@ -76,6 +104,9 @@ public class View {
         }
     }
 
+    /**
+     * Display a message when the game is over.
+     */
     public void displayOver() {
         System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED
                 + "GAME OVER!" + ANSI_RESET);

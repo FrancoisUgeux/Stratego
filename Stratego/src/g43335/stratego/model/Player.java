@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * This class represent a player, each player has a color and set of pieces
+ * This class initialize a player with a color and a set of pieces.
  *
  * @author G43335
  */
@@ -15,8 +15,10 @@ public class Player {
     private ArrayList<Piece> pieces;
 
     /**
+     * Initialize a player with a color and a List of pieces.
      *
-     * @param color is the color of the player
+     * @param color is the color of the player.
+     * @throws NullPointerException if the color is null.
      */
     public Player(PlayerColor color) {
         if (color == null) {
@@ -49,15 +51,12 @@ public class Player {
         if (this.color != other.color) {
             return false;
         }
-        if (!Objects.equals(this.pieces, other.pieces)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.pieces, other.pieces);
     }
 
     /**
      *
-     * @return the color of the player
+     * @return the color of the player.
      */
     public PlayerColor getColor() {
         return color;
@@ -65,15 +64,16 @@ public class Player {
 
     /**
      *
-     * @return the pieces of a player
+     * @return the pieces of a player.
      */
     public ArrayList<Piece> getPieces() {
         return pieces;
     }
 
     /**
+     * Add a piece to the player's List of pieces.
      *
-     * @param piece is the piece to add in the player's piece set
+     * @param piece is the piece to add in the player's piece set.
      */
     public void addPiece(Piece piece) {
         pieces.add(piece);

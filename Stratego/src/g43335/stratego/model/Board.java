@@ -1,23 +1,23 @@
 package g43335.stratego.model;
 
 /**
- * This class represent the game board
+ * This class represent the game board.
  *
  * @author G43335
  */
 public class Board {
 
-    private Square[][] squares;
+    private final Square[][] squares;
 
     /**
-     * Initialize the board to 5 row and 4 column
+     * Initialize the board to 5 row and 4 column.
      */
     public Board() {
         int rows = 5;
         int columns = 4;
         this.squares = new Square[rows][columns];
-        for(int i=0;i<rows;i++){
-            for(int j=0;j<columns;j++){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 this.squares[i][j] = new Square();
             }
         }
@@ -25,19 +25,21 @@ public class Board {
 
     /**
      *
-     * @return the current instance of squares
+     * @return the squares.
      */
     public Square[][] getSquares() {
         return squares;
     }
 
     /**
+     * Check if a position is inside the board.
      *
-     * @param position is the position to verify
-     * @return true if the position is in the game board
+     * @param position is the position to verify.
+     * @return true if the position is in the game board.
+     * @throws NullPointerException if the position is null.
      */
     public boolean isInside(Position position) {
-        if(position == null){
+        if (position == null) {
             throw new NullPointerException("position cannot be null");
         }
         return (position.getRow() < squares.length
@@ -48,8 +50,10 @@ public class Board {
 
     /**
      *
-     * @param position is the position to check
-     * @return the value on the position
+     * @param position is the position to check on the board.
+     * @return the value on this position of the board.
+     * @throws NullPointerException if the position is null.
+     * @throws IllegalArgumentException if the position is not inside the board.
      */
     public Square getSquare(Position position) {
         if (position == null) {
@@ -66,6 +70,8 @@ public class Board {
      *
      * @param piece is the piece to put on the board
      * @param position is the position where we want to add a piece
+     * @throws IllegalArgumentException if the position is not inside the board.
+     * @throws NullPointerException if the piece is null.
      */
     public void put(Piece piece, Position position) {
         if (!isInside(position)) {

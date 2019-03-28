@@ -1,34 +1,27 @@
 package g43335.stratego.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * This class assemble all the other class and initialize the different data
+ * This class assemble all the other class in model and initialize the different
+ * data
  *
  * @author G43335
  */
 public class Game implements Model {
 
-    //private Position position;
-    //private Piece piece;
-    // private Board board;
-    private Player current;
-    private Player opponent;
+    private final Player current;
+    private final Player opponent;
     private Board board;
 
+    /**
+     * Initialize the 2 players and their colors.
+     */
     public Game() {
-        this.current = new Player(PlayerColor.RED);
-        this.opponent = new Player(PlayerColor.BLUE);
+        current = new Player(PlayerColor.RED);
+        opponent = new Player(PlayerColor.BLUE);
     }
 
     /**
-     *
-     * @param current is the currently playing character
-     * @param opponent is the other player
-     */
-    /**
-     * 
+     * Initialize the stratego game with a default board.
      */
     @Override
     public void initialize() {
@@ -44,7 +37,9 @@ public class Game implements Model {
     }
 
     /**
+     * Check if a game can start.
      *
+     * @throws IllegalStateException if the board is not initialized.
      */
     @Override
     public void start() {
@@ -54,8 +49,9 @@ public class Game implements Model {
     }
 
     /**
+     * Check if the game is over.
      *
-     * @return true if the game has ended
+     * @return true if the game has ended.
      */
     @Override
     public boolean isOver() {
@@ -63,8 +59,9 @@ public class Game implements Model {
     }
 
     /**
+     * Give the game board.
      *
-     * @return the current status of the board
+     * @return the board.
      */
     @Override
     public Square[][] getBoard() {

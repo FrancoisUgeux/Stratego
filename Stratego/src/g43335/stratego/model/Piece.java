@@ -3,7 +3,7 @@ package g43335.stratego.model;
 import java.util.Objects;
 
 /**
- * This class create the pieces of the game
+ * This class create the pieces of the game.
  *
  * @author G43335
  */
@@ -13,9 +13,11 @@ public class Piece {
     private PlayerColor color;
 
     /**
+     * Initialize a Piece with a rank and a color.
      *
-     * @param rank is the rank of a piece
-     * @param color is the color of a piece
+     * @param rank is the rank of a piece.
+     * @param color is the color of a piece.
+     * @throws IllegalArgumentException if the rank is negative.
      */
     public Piece(int rank, PlayerColor color) {
         if (rank < 0) {
@@ -48,15 +50,12 @@ public class Piece {
         if (this.rank != other.rank) {
             return false;
         }
-        if (this.color != other.color) {
-            return false;
-        }
-        return true;
+        return this.color == other.color;
     }
 
     /**
      *
-     * @return the rank of the piece
+     * @return the rank of the piece.
      */
     public int getRank() {
         return rank;
@@ -64,7 +63,7 @@ public class Piece {
 
     /**
      *
-     * @return the color of the piece
+     * @return the color of the piece.
      */
     public PlayerColor getColor() {
         return color;

@@ -1,19 +1,20 @@
 package g43335.stratego.model;
 
 /**
- * This class manage the position on the game board
+ * This class manage the position on the game board.
  *
  * @author G43335
  */
 public class Position {
 
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     /**
+     * Initialize a row and a column.
      *
-     * @param row is the row used on the board
-     * @param column is the column used on the board
+     * @param row is the row used on the board.
+     * @param column is the column used on the board.
      */
     public Position(int row, int column) {
         this.row = row;
@@ -43,15 +44,12 @@ public class Position {
         if (this.row != other.row) {
             return false;
         }
-        if (this.column != other.column) {
-            return false;
-        }
-        return true;
+        return this.column == other.column;
     }
 
     /**
      *
-     * @return the row
+     * @return the row.
      */
     public int getRow() {
         return row;
@@ -59,7 +57,7 @@ public class Position {
 
     /**
      *
-     * @return the column
+     * @return the column.
      */
     public int getColumn() {
         return column;
