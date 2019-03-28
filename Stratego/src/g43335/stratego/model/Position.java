@@ -21,6 +21,11 @@ public class Position {
         this.column = column;
     }
 
+    /**
+     * Create a hash code value for the object.
+     *
+     * @return a hash code value for the object.
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -29,6 +34,12 @@ public class Position {
         return hash;
     }
 
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @param obj an object to compare.
+     * @return true if the objects are equals.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
