@@ -25,7 +25,7 @@ public class Board {
 
     /**
      *
-     * @return
+     * @return the current instance of squares
      */
     public Square[][] getSquares() {
         return squares;

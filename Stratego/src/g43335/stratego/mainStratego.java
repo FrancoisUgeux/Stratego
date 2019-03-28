@@ -14,6 +14,7 @@ public class mainStratego {
         Game game = new Game();
         View view = new View();
         Controller controller = new Controller(game, view);
+        controller.initialize();
         controller.startGame();  
     }
 }

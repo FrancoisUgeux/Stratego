@@ -51,31 +51,28 @@ public class View {
     }
 
     public void displayBoard(Square[][] squares) {
+        String ColorPiece;
         System.out.println();
-        System.out.println("  col# || | 00 | | 01 | | 02 | | 03 |");
+        System.out.println("  col# ||  |00|  |01|  |02|  |03|");
         System.out.println("======================================");
         for (int i = 0; i < squares.length; i++) {
             System.out.print("row#0" + i + " || ");
             for (int j = 0; j < squares[i].length; j++) {
-                String ColorPiece;
-                if (squares[i][j].getPiece().getColor() == PlayerColor.BLUE) {
-                    ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE
-                            + "PE" + ANSI_RESET;
+                if (squares[i][j].getPiece() == null) {
+                    System.out.print(" |" + ANSI_WHITE_BACKGROUND
+                            + "  " + ANSI_RESET + "| ");
                 } else {
-                    ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_RED
-                            + "PE" + ANSI_RESET;
+                    if (squares[i][j].getPiece().getColor() == PlayerColor.BLUE) {
+                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE
+                                + "PE" + ANSI_RESET;
+                    } else {
+                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_RED
+                                + "PE" + ANSI_RESET;
+                    }
+                    System.out.print(" |" + ColorPiece + "| ");
                 }
-
-                if (squares[i][j] == null) {
-                    System.out.print(" | " + ANSI_WHITE_BACKGROUND 
-                            + "  " + ANSI_RESET + " | ");
-                } else {
-                    // getColor => variable || 
-                    //getcolor = square[i][j].getcolor 
-                    System.out.print(" | " + ColorPiece + " | ");
-                }
-                System.out.println();
             }
+            System.out.println("");
         }
     }
 

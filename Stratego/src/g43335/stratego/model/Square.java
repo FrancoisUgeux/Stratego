@@ -9,13 +9,13 @@ import java.util.Objects;
  */
 public class Square {
 
-    private Piece pieces;
+    private Piece piece;
 
     /**
      * constructor that set a case to null if there is no piece on it
      */
     public Square() {
-        this.pieces = null;
+        this.piece = null;
     }
 
     /**
@@ -29,7 +29,7 @@ public class Square {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + Objects.hashCode(this.pieces);
+        hash = 17 * hash + Objects.hashCode(this.piece);
         return hash;
     }
 
@@ -45,7 +45,7 @@ public class Square {
             return false;
         }
         final Square other = (Square) obj;
-        if (!Objects.equals(this.pieces, other.pieces)) {
+        if (!Objects.equals(this.piece, other.piece)) {
             return false;
         }
         return true;
@@ -56,7 +56,7 @@ public class Square {
      * @return
      */
     public Piece getPiece() {
-        return pieces;
+        return piece;
     }
 
     /**
@@ -67,9 +67,9 @@ public class Square {
         if (piece == null) {
             throw new NullPointerException("piece cannot be null");
         }
-        if (this.pieces != null) {
+        if (this.piece != null) {
             throw new IllegalStateException("the case must be empty");
         }
-        this.pieces = piece;  
+        this.piece = piece;  
     }
 }
