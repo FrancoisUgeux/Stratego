@@ -26,14 +26,14 @@ public class Game implements Model {
     @Override
     public void initialize() {
         board = new Board();
-        this.board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
-        this.board.put(new Piece(9, PlayerColor.RED), new Position(3, 2));
-        this.board.put(new Piece(0, PlayerColor.BLUE), new Position(4, 2));
-        this.board.put(new Piece(9, PlayerColor.BLUE), new Position(4, 1));
-        this.current.addPiece(new Piece(0, PlayerColor.RED));
-        this.current.addPiece(new Piece(9, PlayerColor.RED));
-        this.opponent.addPiece(new Piece(0, PlayerColor.BLUE));
-        this.opponent.addPiece(new Piece(9, PlayerColor.BLUE));
+        board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
+        board.put(new Piece(9, PlayerColor.RED), new Position(3, 2));
+        board.put(new Piece(0, PlayerColor.BLUE), new Position(4, 2));
+        board.put(new Piece(9, PlayerColor.BLUE), new Position(4, 1));
+        current.addPiece(new Piece(0, PlayerColor.RED));
+        current.addPiece(new Piece(9, PlayerColor.RED));
+        opponent.addPiece(new Piece(0, PlayerColor.BLUE));
+        opponent.addPiece(new Piece(9, PlayerColor.BLUE));
     }
 
     /**
@@ -65,6 +65,6 @@ public class Game implements Model {
      */
     @Override
     public Square[][] getBoard() {
-        return this.board.getSquares();
+        return board.getSquares();
     }
 }

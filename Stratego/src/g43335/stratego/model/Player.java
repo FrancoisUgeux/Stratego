@@ -25,7 +25,7 @@ public class Player {
             throw new NullPointerException("Color cannot be null");
         }
         this.color = color;
-        this.pieces = new ArrayList<>();
+        pieces = new ArrayList<>();
     }
 
     /**

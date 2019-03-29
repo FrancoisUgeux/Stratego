@@ -15,7 +15,7 @@ public class Square {
      * constructor that set a case to null if there is no piece on it.
      */
     public Square() {
-        this.piece = null;
+        piece = null;
     }
 
     /**

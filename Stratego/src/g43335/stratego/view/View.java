@@ -25,7 +25,7 @@ public class View {
      * Initialize a scanner for the keyboard.
      */
     public View() {
-        this.in = new Scanner(System.in);
+        in = new Scanner(System.in);
     }
 
     /**
@@ -57,7 +57,7 @@ public class View {
      */
     public void displayHelp() {
         System.out.println("available command :");
-        System.out.println("quit: quit the game");
+        System.out.println("quit: leave the game");
     }
 
     /**

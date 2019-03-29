@@ -44,7 +44,11 @@ public class Controller {
         view.displayHelp();
         while (!game.isOver()) {
             view.displayBoard(game.getBoard());
-            if ("quit".equals(view.askCommand())) {
+            String command = view.askCommand();
+            if (command.equals("quit")
+                    || command.equals("Quit")
+                    || command.equals("QUIT")) {
+                view.quit();
                 view.displayOver();
                 System.exit(0);
             }

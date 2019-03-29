@@ -15,10 +15,10 @@ public class Board {
     public Board() {
         int rows = 5;
         int columns = 4;
-        this.squares = new Square[rows][columns];
+        squares = new Square[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                this.squares[i][j] = new Square();
+                squares[i][j] = new Square();
             }
         }
     }
@@ -62,7 +62,7 @@ public class Board {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        return this.squares[position.getRow()][position.getColumn()];
+        return squares[position.getRow()][position.getColumn()];
     }
 
     /**
@@ -80,7 +80,7 @@ public class Board {
         if (piece == null) {
             throw new NullPointerException("piece cannot be null");
         }
-        this.squares[position.getRow()][position.getColumn()].put(piece);
+        squares[position.getRow()][position.getColumn()].put(piece);
     }
 
 }
