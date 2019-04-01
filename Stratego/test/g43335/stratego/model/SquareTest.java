@@ -9,24 +9,24 @@ import org.junit.Test;
 
 public class SquareTest {
 
-  //  @Test
-  //  public void testIsFreeTrue() {
-  //      System.out.println("testIsFreeTrue");
-  //      Square instance = new Square();
-  //      boolean expResult = true;
-  //      boolean result = instance.isFree();
-  //      assertEquals(expResult, result);
-  //  }
+    @Test
+    public void testIsFreeTrue() {
+        System.out.println("testIsFreeTrue");
+        Square instance = new Square();
+        boolean expResult = true;
+        boolean result = instance.isFree();
+        assertEquals(expResult, result);
+    }
 
-  //  @Test
-  //  public void testIsFreeFalse() {
-  //      System.out.println("testIsFreeFalse");
-  //      Square instance = new Square();
-  //      instance.put(new Piece(4, PlayerColor.BLUE));
-  //      boolean expResult = false;
-  //      boolean result = instance.isFree();
-  //     assertEquals(expResult, result);
-  //  }
+    @Test
+    public void testIsFreeFalse() {
+        System.out.println("testIsFreeFalse");
+        Square instance = new Square();
+        instance.put(new Piece(4, PlayerColor.BLUE));
+        boolean expResult = false;
+        boolean result = instance.isFree();
+        assertEquals(expResult, result);
+    }
 
     @Test(expected = NullPointerException.class)
     public void testPutWhenPieceIsNull() {
@@ -78,23 +78,22 @@ public class SquareTest {
         assertTrue(square1.equals(square2));
         assertTrue(square1.hashCode() == square2.hashCode());
     }
-    
+
     @Test
     public void equalsTrueSameContent() {
         Square square1 = new Square();
         Square square2 = new Square();
-        square1.put(new Piece(1,  BLUE));
-        square2.put(new Piece(1,  BLUE));
+        square1.put(new Piece(1, BLUE));
+        square2.put(new Piece(1, BLUE));
         assertTrue(square1.equals(square2));
     }
-
 
     @Test
     public void equalsFalseDifferentContent() {
         Square square1 = new Square();
         Square square2 = new Square();
-        square1.put(new Piece(1,  BLUE));
-        square2.put(new Piece(3,  BLUE));
+        square1.put(new Piece(1, BLUE));
+        square2.put(new Piece(3, BLUE));
         assertFalse(square1.equals(square2));
     }
 
@@ -125,5 +124,34 @@ public class SquareTest {
         Square instance = new Square();
         String result = instance.toString();
         assertFalse(result.isEmpty());
+    }
+
+    @Test
+    public void testIsMyOwnWhenMyOwn() {
+        System.out.println("IsMyOwnWhenMyOwn");
+        Square instance = new Square();
+        instance.put(new Piece(4, PlayerColor.BLUE));
+        boolean expResult = true;
+        boolean result = instance.isMyOwn(BLUE);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testIsMyOwnWhenNotMyOwn() {
+        System.out.println("IsMyOwnWhenNotMyOwn");
+        Square instance = new Square();
+        instance.put(new Piece(4, PlayerColor.RED));
+        boolean expResult = false;
+        boolean result = instance.isMyOwn(BLUE);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testIsMyOwnWhenNull() {
+        System.out.println("IsMyOwnWhenNull");
+        Square instance = new Square();
+        boolean expResult = false;
+        boolean result = instance.isMyOwn(BLUE);
+        assertEquals(expResult, result);
     }
 }
