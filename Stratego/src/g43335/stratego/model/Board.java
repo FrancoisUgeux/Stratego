@@ -83,4 +83,28 @@ public class Board {
         squares[position.getRow()][position.getColumn()].put(piece);
     }
 
+    public boolean isFree(Position position) {
+        if (!isInside(position)) {
+            throw new IllegalArgumentException("out of board");
+        }
+        return (squares[position.getRow()][position.getColumn()].getPiece()
+                == null);
+    }
+
+    public boolean isMyOwn(Position position, PlayerColor color) {
+        if (!isInside(position)) {
+            throw new IllegalArgumentException("out of board");
+        }
+        return !(squares[position.getRow()][position.getColumn()]
+                .getPiece() == null
+                || squares[position.getRow()][position.getColumn()]
+                        .getPiece().getColor() != color);
+    }
+
+    public Piece getPiece(Position position) {
+        if (!isInside(position)) {
+            throw new IllegalArgumentException("out of board");
+        }
+        return (squares[position.getRow()][position.getColumn()].getPiece());
+    }
 }
