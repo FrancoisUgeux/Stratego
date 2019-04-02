@@ -11,6 +11,7 @@ public class Game implements Model {
     private final Player current;
     private final Player opponent;
     private Board board;
+    private Position selected;
 
     /**
      * Initialize the 2 players and their colors.
@@ -66,5 +67,27 @@ public class Game implements Model {
     @Override
     public Square[][] getBoard() {
         return board.getSquares();
+    }
+
+    @Override
+    public void select(int row, int column) {
+        if (!board.isInside(new Position(row, column))) {
+            throw new IllegalArgumentException("square is out of the board");
+        }
+        if (board.isFree(new Position(row, column))) {
+            throw new IllegalArgumentException("square cannot be empty");
+        }
+        if (!board.isMyOwn(new Position(row, column), current.getColor())) {
+            throw new IllegalArgumentException("square cannot belong to opponent");
+        }
+        selected = new Position(row, column);
+    }
+
+    @Override
+    public Piece getSelected() {
+        if(selected == null){
+            throw new NullPointerException("selected cannot be null");
+        }
+        return board.getPiece(selected);
     }
 }

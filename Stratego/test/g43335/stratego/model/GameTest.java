@@ -41,8 +41,8 @@ public class GameTest {
     }
 
     @Test
-    public void testStartWhenInsitializeDone() {
-        System.out.println("testStartWhenInsitializeDone");
+    public void testStartWhenInitializeDone() {
+        System.out.println("testStartWhenInitializeDone");
         Game instance = new Game();
         instance.initialize();
         instance.start();
@@ -64,5 +64,32 @@ public class GameTest {
         Square[][] expResult = defaultBoard;
         Square[][] result = instance.getBoard();
         assertArrayEquals(expResult, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSelectWhenOutOfBoard() {
+        System.out.println("testSelectWhenOutOfBoard");
+        Game instance = new Game();
+        Board board = new Board();
+        instance.getBoard();
+        instance.select(5, 8);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSelectWhenSquareEmpty() {
+        System.out.println("testSelectWhenSquareEmpty");
+        Game instance = new Game();
+        Board board = new Board();
+        instance.select(3, 2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSelectWhenThereIsOpponent() {
+        System.out.println("testSelectWhenThereIsOpponent");
+        Game instance = new Game();
+        Board board = new Board();
+        Player current = new Player(PlayerColor.RED);
+        board.put(new Piece(4,PlayerColor.BLUE), new Position(3,2));
+        instance.select(3, 2);
     }
 }

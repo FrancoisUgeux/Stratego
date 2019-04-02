@@ -30,4 +30,8 @@ public interface Model {
      * @return the board.
      */
     Square[][] getBoard();
+    
+    void select(int row, int column);
+    
+    Piece getSelected();
 }

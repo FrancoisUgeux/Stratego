@@ -3,7 +3,7 @@ package g43335.stratego.model;
 import java.util.Objects;
 
 /**
- * This class represent the case of the game board.
+ * This class represent the squares of the game board.
  *
  * @author G43335
  */
@@ -12,7 +12,7 @@ public class Square {
     private Piece piece;
 
     /**
-     * constructor that set a case to null if there is no piece on it.
+     * constructor that set a square to null if there is no piece on it.
      */
     public Square() {
         piece = null;
@@ -60,9 +60,9 @@ public class Square {
     }
 
     /**
-     * Put a piece on a case if this case is empty.
+     * Put a piece on a square if this square is empty.
      *
-     * @param piece is a piece to add on the current case.
+     * @param piece is a piece to add on the current square.
      * @throws NullPointerException if the piece is null.
      * @throws IllegalStateException if there is already a piece on the case.
      */
