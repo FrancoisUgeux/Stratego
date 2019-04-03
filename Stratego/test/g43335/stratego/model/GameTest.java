@@ -101,4 +101,23 @@ public class GameTest {
         instance.select(3, 2);
         assertEquals(expResult, selected);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void testGetSelectedWhenSelectedNull() {
+        System.out.println("testGetSelectedWhenSelectedNull");
+        Game instance = new Game();
+        instance.initialize();
+        instance.getSelected();
+    }
+
+    @Test
+    public void testGetSelected() {
+        Game instance = new Game();
+        instance.initialize();
+        Position position = new Position(0, 1);
+        Position expResult = new Position(3,2);
+        instance.select(3, 2);
+        Piece result = instance.getSelected();
+        assertEquals(expResult, result);
+    }
 }

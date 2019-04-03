@@ -1,5 +1,6 @@
 package g43335.stratego.view;
 
+import g43335.stratego.model.Piece;
 import g43335.stratego.model.PlayerColor;
 import g43335.stratego.model.Square;
 import java.util.Scanner;
@@ -49,7 +50,7 @@ public class View {
      * @param message an error message.
      */
     public void displayError(String message) {
-        System.out.println(ANSI_RED_BACKGROUND + message + ANSI_RESET);
+        System.out.println(ANSI_RED_BACKGROUND + ANSI_WHITE + message + ANSI_RESET);
     }
 
     /**
@@ -58,6 +59,8 @@ public class View {
     public void displayHelp() {
         System.out.println("available command :");
         System.out.println("quit: leave the game");
+        System.out.println("select ligne colonne: sélectionne la pièce "
+                + "a la position demandée");
     }
 
     /**
@@ -106,5 +109,46 @@ public class View {
      */
     public void displayOver() {
         System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+    }
+    
+    public void displaySelected(Piece piece){
+        switch(piece.getRank()){
+            case 0:
+                System.out.println("DR");
+                break;
+            case 1:
+                System.out.println("ES");
+                break;
+            case 2:
+                System.out.println("ÉC");
+                break;
+            case 3:
+                System.out.println("DÉ");
+                break;
+            case 4:
+                System.out.println("SE");
+                break;
+            case 5:
+                System.out.println("LI");
+                break;
+            case 6:
+                System.out.println("CA");
+                break;
+            case 7:
+                System.out.println("CT");
+                break;
+            case 8:
+                System.out.println("CL");
+                break;
+            case 9:
+                System.out.println("GÉ");
+                break;
+            case 10:
+                System.out.println("MA");
+                break;
+            case 11:
+                System.out.println("BO");
+                break;
+        }
     }
 }

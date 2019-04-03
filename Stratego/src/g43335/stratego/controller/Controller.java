@@ -2,6 +2,8 @@ package g43335.stratego.controller;
 
 import g43335.stratego.model.Model;
 import g43335.stratego.view.View;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class is used to run the game and the view together.
@@ -45,12 +47,23 @@ public class Controller {
         while (!game.isOver()) {
             view.displayBoard(game.getBoard());
             String command = view.askCommand();
-            if (command.equals("quit")
-                    || command.equals("Quit")
-                    || command.equals("QUIT")) {
+            Pattern p = Pattern.compile("(\\d)(\\s)(\\d)");
+            Matcher m = p.matcher(command);
+            if (command.matches("quit|Quit|QUIT")) {
                 view.quit();
                 view.displayOver();
                 System.exit(0);
+            } else if (command.matches("select\\s\\d\\s\\d"
+                    + "|Select\\s\\d\\s\\d"
+                    + "|SELECT\\s\\d\\s\\d")) {
+                m.find(); 
+                int row = Integer.parseInt(m.group(1));
+                int column = Integer.parseInt(m.group(3));                
+                game.select(row,column);
+
+            } else {
+                view.displayError(" Wrong command please try again ");
+                view.displayHelp();
             }
         }
         if (game.isOver()) {
