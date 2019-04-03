@@ -3,6 +3,7 @@ package g43335.stratego.model;
 import static g43335.stratego.model.PlayerColor.BLUE;
 import static g43335.stratego.model.PlayerColor.RED;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import org.junit.Before;
 import org.junit.Test;
@@ -70,8 +71,7 @@ public class GameTest {
     public void testSelectWhenOutOfBoard() {
         System.out.println("testSelectWhenOutOfBoard");
         Game instance = new Game();
-        Board board = new Board();
-        instance.getBoard();
+        instance.initialize();
         instance.select(5, 8);
     }
 
@@ -79,17 +79,26 @@ public class GameTest {
     public void testSelectWhenSquareEmpty() {
         System.out.println("testSelectWhenSquareEmpty");
         Game instance = new Game();
-        Board board = new Board();
-        instance.select(3, 2);
+        instance.initialize();
+        instance.select(0, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSelectWhenThereIsOpponent() {
         System.out.println("testSelectWhenThereIsOpponent");
         Game instance = new Game();
-        Board board = new Board();
-        Player current = new Player(PlayerColor.RED);
-        board.put(new Piece(4,PlayerColor.BLUE), new Position(3,2));
+        instance.initialize();
+        instance.select(4, 2);
+    }
+
+    @Test
+    public void testSelectOnePiece() {
+        System.out.println("testSelectOnePiece");
+        Game instance = new Game();
+        instance.initialize();
+        Position expResult = new Position(3, 2);
+        Position selected = new Position(0, 1);
         instance.select(3, 2);
+        assertEquals(expResult, selected);
     }
 }
