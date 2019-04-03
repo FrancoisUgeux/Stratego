@@ -74,4 +74,10 @@ public class Position {
         return column;
     }
 
+    public Position next(Direction direction) {
+        Position position = new Position(row + direction.getRow(),
+                column + direction.getColumn());
+        return position;
+    }
+
 }
