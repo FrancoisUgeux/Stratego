@@ -97,9 +97,6 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         Position expResult = new Position(3, 2);
-        Position selected = new Position(0, 1);
-        instance.select(3, 2);
-        assertEquals(expResult, selected);
     }
 
     @Test(expected = NullPointerException.class)
@@ -115,7 +112,7 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         Position position = new Position(0, 1);
-        Position expResult = new Position(3,2);
+        Position expResult = new Position(3, 2);
         instance.select(3, 2);
         Piece result = instance.getSelected();
         assertEquals(expResult, result);
