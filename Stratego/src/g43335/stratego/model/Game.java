@@ -1,5 +1,8 @@
 package g43335.stratego.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class assemble all the other class in model and initialize the different
  * data
@@ -85,9 +88,28 @@ public class Game implements Model {
 
     @Override
     public Piece getSelected() {
-        if(selected == null){
+        if (selected == null) {
             throw new NullPointerException("selected cannot be null");
         }
         return board.getPiece(selected);
+    }
+
+    @Override
+    public List<Move> getMoves() {
+        if (selected == null) {
+            throw new NullPointerException("selected piece cannot be null");
+        }
+
+        Piece piece = board.getPiece(new Position(selected.getRow(), selected.getColumn()));
+        Position start = new Position(selected.getRow(), selected.getColumn());
+        List<Move> moves = new ArrayList<>();
+        for (Direction direction : Direction.values()) {
+            if (board.isInside(selected.next(direction))) {
+                Position end = new Position(selected.next(direction).getRow(),
+                        selected.next(direction).getColumn());
+                moves.add(new Move(piece, start, end));
+            }
+        }
+        return moves;
     }
 }

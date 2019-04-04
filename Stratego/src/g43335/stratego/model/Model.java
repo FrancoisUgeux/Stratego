@@ -1,5 +1,7 @@
 package g43335.stratego.model;
 
+import java.util.List;
+
 /**
  * Model of Stratego
  *
@@ -34,4 +36,6 @@ public interface Model {
     void select(int row, int column);
     
     Piece getSelected();
+    
+    List<Move> getMoves();
 }
