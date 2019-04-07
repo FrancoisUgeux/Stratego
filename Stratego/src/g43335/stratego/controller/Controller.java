@@ -56,11 +56,15 @@ public class Controller {
             } else if (command.matches("select\\s\\d\\s\\d"
                     + "|Select\\s\\d\\s\\d"
                     + "|SELECT\\s\\d\\s\\d")) {
-                m.find(); 
+                m.find();
                 int row = Integer.parseInt(m.group(1));
-                int column = Integer.parseInt(m.group(3));                
-                game.select(row,column);
-
+                int column = Integer.parseInt(m.group(3));
+                game.select(row, column);
+            } else if (command.matches("moves")) {
+                if (game.getSelected() == null){
+                    view.displayError("You must select a piece before");
+                }
+                view.displayMoves(game.getMoves());
             } else {
                 view.displayError(" Wrong command please try again ");
                 view.displayHelp();

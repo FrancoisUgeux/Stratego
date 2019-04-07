@@ -1,8 +1,10 @@
 package g43335.stratego.view;
 
+import g43335.stratego.model.Move;
 import g43335.stratego.model.Piece;
 import g43335.stratego.model.PlayerColor;
 import g43335.stratego.model.Square;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -59,8 +61,10 @@ public class View {
     public void displayHelp() {
         System.out.println("available command :");
         System.out.println("quit: leave the game");
-        System.out.println("select ligne colonne: sélectionne la pièce "
-                + "a la position demandée");
+        System.out.println("select row column: select a piece "
+                + "at the requested position ");
+        System.out.println("moves: display the moves available "
+                + "for the selected piece");
     }
 
     /**
@@ -110,45 +114,55 @@ public class View {
     public void displayOver() {
         System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
     }
-    
-    public void displaySelected(Piece piece){
-        switch(piece.getRank()){
+
+    public void displaySelected(Piece piece) {
+        switch (piece.getRank()) {
             case 0:
-                System.out.println("DR");
+                System.out.print("DR");
                 break;
             case 1:
-                System.out.println("ES");
+                System.out.print("ES");
                 break;
             case 2:
-                System.out.println("ÉC");
+                System.out.print("ÉC");
                 break;
             case 3:
-                System.out.println("DÉ");
+                System.out.print("DÉ");
                 break;
             case 4:
-                System.out.println("SE");
+                System.out.print("SE");
                 break;
             case 5:
-                System.out.println("LI");
+                System.out.print("LI");
                 break;
             case 6:
-                System.out.println("CA");
+                System.out.print("CA");
                 break;
             case 7:
-                System.out.println("CT");
+                System.out.print("CT");
                 break;
             case 8:
-                System.out.println("CL");
+                System.out.print("CL");
                 break;
             case 9:
-                System.out.println("GÉ");
+                System.out.print("GÉ");
                 break;
             case 10:
-                System.out.println("MA");
+                System.out.print("MA");
                 break;
             case 11:
-                System.out.println("BO");
+                System.out.print("BO");
                 break;
+        }
+    }
+
+    public void displayMoves(List<Move> moves) {
+        for (int i = 0; i < moves.size(); i++) {
+            System.out.print(i + " - ");
+            displaySelected(moves.get(i).getPiece());
+            System.out.println(" peut se déplacer vers la ligne "
+                    + moves.get(i).getEnd().getRow() + " et la colonne "
+                    + moves.get(i).getEnd().getColumn());
         }
     }
 }
