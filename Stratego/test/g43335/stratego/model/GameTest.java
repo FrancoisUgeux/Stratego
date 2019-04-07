@@ -117,4 +117,13 @@ public class GameTest {
         Piece result = instance.getSelected();
         assertEquals(expResult, result);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void testApplyWhenNoMove() {
+        System.out.println("applyWhenNoMove");
+        Game instance = new Game();
+        instance.initialize();
+        Move move = new Move(null, null, null);
+        instance.apply(move);
+    }
 }

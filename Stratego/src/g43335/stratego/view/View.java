@@ -65,6 +65,8 @@ public class View {
                 + "at the requested position ");
         System.out.println("moves: display the moves available "
                 + "for the selected piece");
+        System.out.println("apply movesNumber: move the piece "
+                + "with the selected move");
     }
 
     /**

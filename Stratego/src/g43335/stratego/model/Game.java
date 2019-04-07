@@ -112,4 +112,26 @@ public class Game implements Model {
         }
         return moves;
     }
+
+    @Override
+    public void apply(Move move) {
+        if (move == null) {
+            throw new NullPointerException("Invalid move");
+        }
+        Piece assailant = move.getPiece();
+        Position target = move.getEnd();
+        Piece attacked = board.getSquare(target).getPiece();
+        if (board.isFree(target)) {
+            board.getSquare(target).put(assailant);
+        } else if (assailant.isStronger(attacked)) {
+            board.remove(target);
+            board.put(assailant, target);
+            opponent.remove(attacked);
+        } else if (assailant.hasSameRank(attacked)) {
+            board.remove(target);
+        } else {
+            current.remove(assailant);
+        }
+        board.remove(move.getStart());
+    }
 }

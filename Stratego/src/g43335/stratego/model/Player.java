@@ -90,4 +90,9 @@ public class Player {
         pieces.add(piece);
     }
 
+    public void remove(Piece piece) {
+        if (!pieces.isEmpty()) {
+            pieces.remove(piece);
+        }
+    }
 }

@@ -75,12 +75,16 @@ public class Square {
         }
         this.piece = piece;
     }
-    
-    public boolean isFree(){
+
+    public boolean isFree() {
         return (piece == null);
     }
-    
-    public boolean isMyOwn(PlayerColor color){
+
+    public boolean isMyOwn(PlayerColor color) {
         return !(piece == null || piece.getColor() != color);
+    }
+
+    public void remove() {
+        piece = null;
     }
 }

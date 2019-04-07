@@ -1,7 +1,9 @@
 package g43335.stratego.controller;
 
 import g43335.stratego.model.Model;
+import g43335.stratego.model.Move;
 import g43335.stratego.view.View;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,6 +51,7 @@ public class Controller {
             String command = view.askCommand();
             Pattern p = Pattern.compile("(\\d)(\\s)(\\d)");
             Matcher m = p.matcher(command);
+
             if (command.matches("quit|Quit|QUIT")) {
                 view.quit();
                 view.displayOver();
@@ -60,11 +63,24 @@ public class Controller {
                 int row = Integer.parseInt(m.group(1));
                 int column = Integer.parseInt(m.group(3));
                 game.select(row, column);
-            } else if (command.matches("moves")) {
-                if (game.getSelected() == null){
-                    view.displayError("You must select a piece before");
+                command = view.askCommand();
+                if (command.matches("moves")) {
+                    if (game.getSelected() == null) {
+                        view.displayError("You must select a piece before");
+                    }
+                    view.displayMoves(game.getMoves());
+                    command = view.askCommand();
+                    if (command.matches("apply\\s\\d")) {
+                        Pattern p1 = Pattern.compile("\\d");
+                        Matcher m1 = p1.matcher(command);
+                        m1.find();
+                        int selectedMove = Integer.parseInt(m1.group());
+                        System.out.println(selectedMove);
+                        Move move = game.getMoves().get(selectedMove);
+                        game.apply(move);
+                    }
                 }
-                view.displayMoves(game.getMoves());
+
             } else {
                 view.displayError(" Wrong command please try again ");
                 view.displayHelp();

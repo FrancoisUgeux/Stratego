@@ -38,4 +38,6 @@ public interface Model {
     Piece getSelected();
     
     List<Move> getMoves();
+    
+    void apply(Move move);
 }
