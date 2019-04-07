@@ -99,5 +99,32 @@ public class PieceTest {
         Piece piece1 = new Piece(10, BLUE);
         assertFalse(piece1.equals(null));
     }
-
+    
+    @Test
+    public void isStronger(){
+        Piece instance = new Piece(5, RED);
+        Piece other = new Piece(4, BLUE);
+        assertTrue(instance.isStronger(other));
+    }
+    
+    @Test
+    public void isStrongerWhenSameRank(){
+        Piece instance = new Piece(5, RED);
+        Piece other = new Piece (5, BLUE);
+        assertFalse(instance.isStronger(other));
+    }
+    
+    @Test
+    public void hasSameRank(){
+        Piece instance = new Piece(10,RED);
+        Piece other = new Piece(10, BLUE);
+        assertTrue(instance.hasSameRank(other));
+    }
+    
+        @Test
+    public void hasSameRankWhenDifferent(){
+        Piece instance = new Piece(3,RED);
+        Piece other = new Piece(5, BLUE);
+        assertFalse(instance.hasSameRank(other));
+    }
 }

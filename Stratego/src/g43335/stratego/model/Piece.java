@@ -79,4 +79,12 @@ public class Piece {
     public PlayerColor getColor() {
         return color;
     }
+    
+    public boolean isStronger(Piece other){
+        return(this.rank > other.getRank());
+    }
+    
+    public boolean hasSameRank(Piece other){
+        return(this.rank == other.getRank());
+    }
 }
