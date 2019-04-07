@@ -325,4 +325,24 @@ public class BoardTest {
         Board instance = new Board();
         instance.getPiece(position);
     }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void testRemoveWhenPositionIsOutside(){
+        System.out.println("RemoveWhenPositionIsOutside");
+        Position position = new Position(6,7);
+        Board instance = new Board();
+        instance.remove(position);
+    }
+    
+    @Test
+    public void testRemove(){
+        System.out.println("remove");
+        Position position = new Position(3,2);
+        Board instance = new Board();
+        instance.put(new Piece(4, PlayerColor.BLUE), position);
+        Square expResult = null;
+        instance.remove(position);
+        Square result = instance.getSquare(position);
+        assertEquals(expResult, result);
+    }
 }

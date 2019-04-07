@@ -101,28 +101,32 @@ public class PieceTest {
     }
     
     @Test
-    public void isStronger(){
+    public void testIsStronger(){
+        System.out.println("isStronger");
         Piece instance = new Piece(5, RED);
         Piece other = new Piece(4, BLUE);
         assertTrue(instance.isStronger(other));
     }
     
     @Test
-    public void isStrongerWhenSameRank(){
+    public void testIsStrongerWhenSameRank(){
+        System.out.println("isStrongerWhenSameRank");
         Piece instance = new Piece(5, RED);
         Piece other = new Piece (5, BLUE);
         assertFalse(instance.isStronger(other));
     }
     
     @Test
-    public void hasSameRank(){
+    public void testHasSameRank(){
+        System.out.println("hasSameRank");
         Piece instance = new Piece(10,RED);
         Piece other = new Piece(10, BLUE);
         assertTrue(instance.hasSameRank(other));
     }
     
         @Test
-    public void hasSameRankWhenDifferent(){
+    public void testHasSameRankWhenDifferent(){
+            System.out.println("hasSameRankWhenDifferent");
         Piece instance = new Piece(3,RED);
         Piece other = new Piece(5, BLUE);
         assertFalse(instance.hasSameRank(other));

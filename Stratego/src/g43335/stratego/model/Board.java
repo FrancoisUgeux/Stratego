@@ -107,4 +107,13 @@ public class Board {
         }
         return (squares[position.getRow()][position.getColumn()].getPiece());
     }
+    
+    public void remove(Position position){
+        if(!isInside(position)){
+            throw new IllegalArgumentException("out of board");
+        }
+        if(!isFree(position)){
+            squares[position.getRow()][position.getColumn()] = null;
+        }
+    }
 }
