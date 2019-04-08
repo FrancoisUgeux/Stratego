@@ -44,6 +44,7 @@ public class View {
      * Display a goodbye message.
      */
     public void quit() {
+        System.out.println();
         System.out.println(ANSI_BLUE + "See you soon for a new game"
                 + ANSI_RESET);
     }
@@ -89,6 +90,7 @@ public class View {
      */
     public void displayBoard(Square[][] squares) {
         String ColorPiece;
+        System.out.println();
         System.out.println("  col# ||  |00|  |01|  |02|  |03|");
         System.out.println("======================================");
         for (int i = 0; i < squares.length; i++) {
@@ -99,13 +101,13 @@ public class View {
                             + "  " + ANSI_RESET + "| ");
                 } else {
                     if (square.getPiece().getColor() == PlayerColor.BLUE) {
-                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE
-                                + "PE" + ANSI_RESET;
+                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE;
                     } else {
-                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_RED
-                                + "PE" + ANSI_RESET;
+                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_RED;
                     }
-                    System.out.print(" |" + ColorPiece + "| ");
+                    System.out.print(" |" + ColorPiece);
+                    displaySelected(square.getPiece());
+                    System.out.print(ANSI_RESET + " |");
                 }
             }
             System.out.println("");

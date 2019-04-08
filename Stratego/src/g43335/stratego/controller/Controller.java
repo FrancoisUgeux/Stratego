@@ -67,13 +67,13 @@ public class Controller {
                 int column = Integer.parseInt(m.group(3));
                 game.select(row, column);
                 command = view.askCommand();
-                if (command.matches("moves")) {
+                if (command.matches("moves|Moves|MOVES")) {
                     if (game.getSelected() == null) {
                         view.displayError("You must select a piece before");
                     }
                     view.displayMoves(game.getMoves());
                     command = view.askCommand();
-                    if (command.matches("apply\\s\\d")) {
+                    if (command.matches("apply\\s\\d|Apply\\s\\d|APPLY\\s\\d")) {
                         Pattern p1 = Pattern.compile("\\d");
                         Matcher m1 = p1.matcher(command);
                         m1.find();
