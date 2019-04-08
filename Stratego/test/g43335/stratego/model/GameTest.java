@@ -2,6 +2,8 @@ package g43335.stratego.model;
 
 import static g43335.stratego.model.PlayerColor.BLUE;
 import static g43335.stratego.model.PlayerColor.RED;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -109,6 +111,7 @@ public class GameTest {
 
     @Test
     public void testGetSelected() {
+        System.out.println("testGetSelected");
         Game instance = new Game();
         instance.initialize();
         Position position = new Position(0, 1);
@@ -119,11 +122,121 @@ public class GameTest {
     }
 
     @Test(expected = NullPointerException.class)
+    public void testGetMovesWhenSelectedNull() {
+        System.out.println("testGetMovesWhenSelectedNull");
+        Game instance = new Game();
+        instance.initialize();
+        instance.getMoves();
+    }
+
+    @Test
+    public void testGetMoves() {
+        System.out.println("testGetMoves");
+        Game instance = new Game();
+        instance.initialize();
+        instance.select(0, 1);
+        List<Move> expResult = new ArrayList();
+        Position start = new Position(0, 1);
+        Piece piece = new Piece(0, RED);
+        expResult.add(new Move(piece, start, new Position(1, 1)));
+        expResult.add(new Move(piece, start, new Position(0, 0)));
+        expResult.add(new Move(piece, start, new Position(0, 2)));
+        List<Move> result = instance.getMoves();
+        assertEquals(expResult, result);
+    }
+
+    @Test(expected = NullPointerException.class)
     public void testApplyWhenNoMove() {
-        System.out.println("applyWhenNoMove");
+        System.out.println("testApplyWhenNoMove");
         Game instance = new Game();
         instance.initialize();
         Move move = new Move(null, null, null);
         instance.apply(move);
+    }
+
+    @Test
+    public void testApplyWhenFree() {
+        System.out.println("testApplyWhenFree");
+        Game instance = new Game();
+        instance.initialize();
+        List<Move> moves = new ArrayList();
+        Piece piece = new Piece(0, RED);
+        Position start = new Position(0, 1);
+        Position target = new Position(1, 1);
+        moves.add(new Move(piece, start, target));
+        instance.apply(moves.get(0));
+        instance.select(1, 1);
+        Piece expResult = piece;
+        Piece result = instance.getSelected();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testApplyWhenIsStronger() {
+        System.out.println("testApplyWhenIsStronger");
+        Game instance = new Game();
+        instance.initialize();
+        List<Move> moves = new ArrayList();
+        Piece piece = new Piece(9, RED);
+        Position start = new Position(3, 2);
+        Position target = new Position(4, 2);
+        moves.add(new Move(piece, start, target));
+        instance.apply(moves.get(0));
+        instance.select(4, 2);
+        Piece expResult = piece;
+        Piece result = instance.getSelected();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testApplyWhenHasSameRank() {
+        System.out.println("testApplyWhenHasSameRank");
+        Game instance = new Game();
+        instance.initialize();
+        List<Move> moves = new ArrayList();
+        Piece piece = new Piece(9, RED);
+        Position start = new Position(3, 2);
+        Position start2 = new Position(4, 2);
+        Position target = new Position(4, 2);
+        Position target2 = new Position(4, 1);
+        moves.add(new Move(piece, start, target));
+        moves.add(new Move(piece, start2, target2));
+        instance.apply(moves.get(0));
+        instance.apply(moves.get(1));
+        defaultBoard[3][2].remove();
+        defaultBoard[4][2].remove();
+        defaultBoard[4][1].remove();
+        Square[][] expResult = defaultBoard;
+        Square[][] result = instance.getBoard();
+        assertArrayEquals(expResult, result);
+    }
+
+    @Test
+    public void testApplyWhenWeaker() {
+        System.out.println("testApplyWhenWeaker");
+        Game instance = new Game();
+        instance.initialize();
+        List<Move> moves = new ArrayList();
+        Piece piece = new Piece(0, RED);
+        Position start = new Position(0, 1);
+        Position start2 = new Position(1, 1);
+        Position start3 = new Position(2, 1);
+        Position start4 = new Position(3, 1);
+        Position target = new Position(1, 1);
+        Position target2 = new Position(2, 1);
+        Position target3 = new Position(3, 1);
+        Position target4 = new Position(4, 1);
+        moves.add(new Move(piece, start, target));
+        moves.add(new Move(piece, start2, target2));
+        moves.add(new Move(piece, start3, target3));
+        moves.add(new Move(piece, start4, target4));
+        instance.apply(moves.get(0));
+        instance.apply(moves.get(1));
+        instance.apply(moves.get(2));
+        instance.apply(moves.get(3));
+        defaultBoard[0][1].remove();
+        Square[][] expResult = defaultBoard;
+        Square[][] result = instance.getBoard();
+        assertArrayEquals(expResult, result);
     }
 }
