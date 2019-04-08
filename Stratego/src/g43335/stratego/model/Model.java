@@ -40,4 +40,6 @@ public interface Model {
     List<Move> getMoves();
     
     void apply(Move move);
+    
+    Player getCurrent();
 }

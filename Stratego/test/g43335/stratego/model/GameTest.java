@@ -165,10 +165,11 @@ public class GameTest {
         Position target = new Position(1, 1);
         moves.add(new Move(piece, start, target));
         instance.apply(moves.get(0));
-        instance.select(1, 1);
-        Piece expResult = piece;
-        Piece result = instance.getSelected();
-        assertEquals(expResult, result);
+        defaultBoard[0][1].remove();
+        defaultBoard[1][1].put(piece);
+        Square[][] expResult = defaultBoard;
+        Square[][] result = instance.getBoard();
+        assertArrayEquals(expResult, result);
     }
 
     @Test
@@ -182,10 +183,12 @@ public class GameTest {
         Position target = new Position(4, 2);
         moves.add(new Move(piece, start, target));
         instance.apply(moves.get(0));
-        instance.select(4, 2);
-        Piece expResult = piece;
-        Piece result = instance.getSelected();
-        assertEquals(expResult, result);
+        defaultBoard[3][2].remove();
+        defaultBoard[4][2].remove();
+        defaultBoard[4][2].put(piece);
+        Square[][] expResult = defaultBoard;
+        Square[][] result = instance.getBoard();
+        assertArrayEquals(expResult, result);
     }
 
     @Test

@@ -2,7 +2,9 @@ package g43335.stratego.view;
 
 import g43335.stratego.model.Move;
 import g43335.stratego.model.Piece;
+import g43335.stratego.model.Player;
 import g43335.stratego.model.PlayerColor;
+import static g43335.stratego.model.PlayerColor.BLUE;
 import g43335.stratego.model.Square;
 import java.util.List;
 import java.util.Scanner;
@@ -158,13 +160,72 @@ public class View {
         }
     }
 
+    public void displaySelectedFullName(Piece piece) {
+        switch (piece.getRank()) {
+            case 0:
+                System.out.print("Drapeau");
+                break;
+            case 1:
+                System.out.print("Espion");
+                break;
+            case 2:
+                System.out.print("Éclaireur");
+                break;
+            case 3:
+                System.out.print("Démineur");
+                break;
+            case 4:
+                System.out.print("Sergent");
+                break;
+            case 5:
+                System.out.print("Lieutenant");
+                break;
+            case 6:
+                System.out.print("Capitaine");
+                break;
+            case 7:
+                System.out.print("Commandant");
+                break;
+            case 8:
+                System.out.print("Colonel");
+                break;
+            case 9:
+                System.out.print("Général");
+                break;
+            case 10:
+                System.out.print("Maréchal");
+                break;
+            case 11:
+                System.out.print("Bombe");
+                break;
+        }
+    }
+
     public void displayMoves(List<Move> moves) {
         for (int i = 0; i < moves.size(); i++) {
             System.out.print(i + " - ");
-            displaySelected(moves.get(i).getPiece());
-            System.out.println(" peut se déplacer vers la ligne "
-                    + moves.get(i).getEnd().getRow() + " et la colonne "
+            if (moves.get(i).getPiece().getColor() == BLUE) {
+                System.out.print(ANSI_BLUE);
+                displaySelectedFullName(moves.get(i).getPiece());
+                System.out.print(ANSI_RESET);
+            } else {
+                System.out.print(ANSI_RED);
+                displaySelectedFullName(moves.get(i).getPiece());
+                System.out.print(ANSI_RESET);
+            }
+            System.out.println(" can move to the row "
+                    + moves.get(i).getEnd().getRow() + " and the column "
                     + moves.get(i).getEnd().getColumn());
+        }
+    }
+
+    public void displayCurrentPlayer(Player player) {
+        if (player.getColor() == BLUE) {
+            System.out.println("your turn" + ANSI_BLUE
+                    + " Blue player" + ANSI_RESET);
+        } else {
+            System.out.println("Your turn" + ANSI_RED
+                    + " Red player" + ANSI_RESET);
         }
     }
 }

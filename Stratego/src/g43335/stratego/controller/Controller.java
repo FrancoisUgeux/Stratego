@@ -2,6 +2,7 @@ package g43335.stratego.controller;
 
 import g43335.stratego.model.Model;
 import g43335.stratego.model.Move;
+import g43335.stratego.model.Player;
 import g43335.stratego.view.View;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -48,6 +49,8 @@ public class Controller {
         view.displayHelp();
         while (!game.isOver()) {
             view.displayBoard(game.getBoard());
+            Player current = game.getCurrent();
+            view.displayCurrentPlayer(current);
             String command = view.askCommand();
             Pattern p = Pattern.compile("(\\d)(\\s)(\\d)");
             Matcher m = p.matcher(command);

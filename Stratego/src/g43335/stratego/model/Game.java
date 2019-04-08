@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class Game implements Model {
 
-    private final Player current;
-    private final Player opponent;
+    private Player current;
+    private Player opponent;
     private Board board;
     private Position selected;
 
@@ -133,5 +133,17 @@ public class Game implements Model {
             current.remove(assailant);
         }
         board.remove(move.getStart());
+        swapPlayers();
+    }
+
+    public void swapPlayers() {
+        Player temp = current;
+        current = opponent;
+        opponent = temp;
+    }
+
+    @Override
+    public Player getCurrent() {
+        return current;
     }
 }
