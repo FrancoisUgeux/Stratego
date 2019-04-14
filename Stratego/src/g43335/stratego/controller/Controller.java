@@ -47,7 +47,7 @@ public class Controller {
             String command = view.askCommand();
             if (command.equals("quit")
                     || command.equals("Quit")
-                    || command.equals("QUIT")) {
+                    || command.equals("QUIT")) { //sdr | Consulte et utilise ce que tu peux de l'API java concernant la classe String. 
                 view.quit();
                 view.displayOver();
                 System.exit(0);

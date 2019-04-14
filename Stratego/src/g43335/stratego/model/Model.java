@@ -1,6 +1,6 @@
 package g43335.stratego.model;
 
-/**
+/** sdr |  Il fallait copier la classe fournie.
  * Model of Stratego
  *
  * @author G43335

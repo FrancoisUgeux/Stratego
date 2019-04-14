@@ -13,7 +13,7 @@ public class Board {
      * Initialize the board to 5 row and 4 column.
      */
     public Board() {
-        int rows = 5;
+        int rows = 5;//sdr | Valeurs magiques (voir wikipedia) à remplacer par des constantes.
         int columns = 4;
         squares = new Square[rows][columns];
         for (int i = 0; i < rows; i++) {
