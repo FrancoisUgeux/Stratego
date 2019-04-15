@@ -1,5 +1,8 @@
 package g43335.stratego.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class represent the game board.
  *
@@ -107,13 +110,25 @@ public class Board {
         }
         return (squares[position.getRow()][position.getColumn()].getPiece());
     }
-    
-    public void remove(Position position){
-        if(!isInside(position)){
+
+    public void remove(Position position) {
+        if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        if(!isFree(position)){
+        if (!isFree(position)) {
             squares[position.getRow()][position.getColumn()].remove();
         }
+    }
+
+    public List<Position> getTakenSquare(Player player) {
+        List position = new ArrayList();
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[i].length; j++) {
+                if(player.getPieces().contains(getSquare(new Position(i,j)))){
+                    position.add(i,j);
+                }
+            }
+        }
+        return position;
     }
 }
