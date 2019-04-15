@@ -1,5 +1,7 @@
 package g43335.stratego.model;
 
+import g43335.stratego.model.pieces.Flag;
+import g43335.stratego.model.pieces.General;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +32,14 @@ public class Game implements Model {
     @Override
     public void initialize() {
         board = new Board();
-        board.put(new Piece(0, PlayerColor.RED), new Position(0, 1));
-        board.put(new Piece(9, PlayerColor.RED), new Position(3, 2));
-        board.put(new Piece(0, PlayerColor.BLUE), new Position(4, 2));
-        board.put(new Piece(9, PlayerColor.BLUE), new Position(4, 1));
-        current.addPiece(new Piece(0, PlayerColor.RED));
-        current.addPiece(new Piece(9, PlayerColor.RED));
-        opponent.addPiece(new Piece(0, PlayerColor.BLUE));
-        opponent.addPiece(new Piece(9, PlayerColor.BLUE));
+        board.put(new Flag(0, PlayerColor.RED), new Position(0, 1));
+        board.put(new General(9, PlayerColor.RED), new Position(3, 2));
+        board.put(new Flag(0, PlayerColor.BLUE), new Position(4, 2));
+        board.put(new General(9, PlayerColor.BLUE), new Position(4, 1));
+        current.addPiece(new Flag(0, PlayerColor.RED));
+        current.addPiece(new General(9, PlayerColor.RED));
+        opponent.addPiece(new Flag(0, PlayerColor.BLUE));
+        opponent.addPiece(new General(9, PlayerColor.BLUE));
     }
 
     /**

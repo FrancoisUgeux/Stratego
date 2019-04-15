@@ -66,6 +66,7 @@ public class Controller {
                 int row = Integer.parseInt(m.group(1));
                 int column = Integer.parseInt(m.group(3));
                 game.select(row, column);
+                view.displaySelectedPiece(game.getSelected());
                 command = view.askCommand();
                 if (command.matches("moves|Moves|MOVES")) {
                     if (game.getSelected() == null) {

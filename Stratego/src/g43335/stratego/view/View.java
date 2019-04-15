@@ -124,16 +124,16 @@ public class View {
     public void displaySelected(Piece piece) {
         switch (piece.getRank()) {
             case 0:
-                System.out.print("DR");
+                System.out.print("FL");
                 break;
             case 1:
-                System.out.print("ES");
+                System.out.print("SP");
                 break;
             case 2:
-                System.out.print("ÉC");
+                System.out.print("SC");
                 break;
             case 3:
-                System.out.print("DÉ");
+                System.out.print("DE");
                 break;
             case 4:
                 System.out.print("SE");
@@ -145,13 +145,13 @@ public class View {
                 System.out.print("CA");
                 break;
             case 7:
-                System.out.print("CT");
+                System.out.print("CR");
                 break;
             case 8:
                 System.out.print("CL");
                 break;
             case 9:
-                System.out.print("GÉ");
+                System.out.print("GE");
                 break;
             case 10:
                 System.out.print("MA");
@@ -165,40 +165,88 @@ public class View {
     public void displaySelectedFullName(Piece piece) {
         switch (piece.getRank()) {
             case 0:
-                System.out.print("Drapeau");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue flag");
+                } else {
+                    System.out.print("Red Flag");
+                }
                 break;
             case 1:
-                System.out.print("Espion");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Spy");
+                } else {
+                    System.out.print("Red Spy");
+                }
                 break;
             case 2:
-                System.out.print("Éclaireur");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Scout");
+                } else {
+                    System.out.print("Red Scout");
+                }
                 break;
             case 3:
-                System.out.print("Démineur");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Deminer");
+                } else {
+                    System.out.print("Red Deminer");
+                }
                 break;
             case 4:
-                System.out.print("Sergent");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Sergeant");
+                } else {
+                    System.out.print("Red Sergeant");
+                }
                 break;
             case 5:
-                System.out.print("Lieutenant");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Lieutenant");
+                } else {
+                    System.out.print("Red Lieutenant");
+                }
                 break;
             case 6:
-                System.out.print("Capitaine");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Captain");
+                } else {
+                    System.out.print("Red Captain");
+                }
                 break;
             case 7:
-                System.out.print("Commandant");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Commander");
+                } else {
+                    System.out.print("Red Commander");
+                }
                 break;
             case 8:
-                System.out.print("Colonel");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Colonel");
+                } else {
+                    System.out.print("Red Colonel");
+                }
                 break;
             case 9:
-                System.out.print("Général");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue General");
+                } else {
+                    System.out.print("Red General");
+                }
                 break;
             case 10:
-                System.out.print("Maréchal");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Marshal");
+                } else {
+                    System.out.print("Red Marshal");
+                }
                 break;
             case 11:
-                System.out.print("Bombe");
+                if (piece.getColor() == BLUE) {
+                    System.out.print("Blue Bomb");
+                } else {
+                    System.out.print("Red Bomb");
+                }
                 break;
         }
     }
@@ -228,6 +276,20 @@ public class View {
         } else {
             System.out.println("Your turn" + ANSI_RED
                     + " Red player" + ANSI_RESET);
+        }
+    }
+
+    public void displaySelectedPiece(Piece piece) {
+        if (piece.getColor() == BLUE) {
+            System.out.print(ANSI_BLUE);
+            displaySelectedFullName(piece);
+            System.out.print(ANSI_RESET);
+            System.out.println(" selected");
+        } else {
+            System.out.print(ANSI_RED);
+            displaySelectedFullName(piece);
+            System.out.print(ANSI_RESET);
+            System.out.println(" selected");
         }
     }
 }
