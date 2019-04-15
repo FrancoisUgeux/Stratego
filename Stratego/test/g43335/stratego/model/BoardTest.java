@@ -1,6 +1,9 @@
 package g43335.stratego.model;
 
 import static g43335.stratego.model.PlayerColor.BLUE;
+import static g43335.stratego.model.PlayerColor.RED;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -267,7 +270,7 @@ public class BoardTest {
 
     @Test
     public void testIsMyOwnWhenMyOwn() {
-        System.out.println("IsMyOwnWhenMyOwn");
+        System.out.println("testIsMyOwnWhenMyOwn");
         Board instance = new Board();
         instance.put(new Piece(4, PlayerColor.BLUE), new Position(2, 3));
         Position position = new Position(2, 3);
@@ -278,7 +281,7 @@ public class BoardTest {
 
     @Test
     public void testIsMyOwnWhenNotMyOwn() {
-        System.out.println("IsMyOwnWhenNotMyOwn");
+        System.out.println("testIsMyOwnWhenNotMyOwn");
         Board instance = new Board();
         instance.put(new Piece(4, PlayerColor.RED), new Position(2, 3));
         Position position = new Position(2, 3);
@@ -289,7 +292,7 @@ public class BoardTest {
 
     @Test
     public void testIsMyOwnWhenNull() {
-        System.out.println("IsMyOwnWhenNull");
+        System.out.println("testIsMyOwnWhenNull");
         Board instance = new Board();
         Position position = new Position(2, 3);
         boolean expResult = false;
@@ -308,7 +311,7 @@ public class BoardTest {
 
     @Test
     public void testGetPiece() {
-        System.out.println("getPiece");
+        System.out.println("testGetPiece");
         Board instance = new Board();
         Position position = new Position(1, 2);
         instance.put(new Piece(4, PlayerColor.BLUE), position);
@@ -325,24 +328,45 @@ public class BoardTest {
         Board instance = new Board();
         instance.getPiece(position);
     }
-    
-    @Test (expected = IllegalArgumentException.class)
-    public void testRemoveWhenPositionIsOutside(){
-        System.out.println("RemoveWhenPositionIsOutside");
-        Position position = new Position(6,7);
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testRemoveWhenPositionIsOutside() {
+        System.out.println("testRemoveWhenPositionIsOutside");
+        Position position = new Position(6, 7);
         Board instance = new Board();
         instance.remove(position);
     }
-    
+
     @Test
-    public void testRemove(){
-        System.out.println("remove");
-        Position position = new Position(3,2);
+    public void testRemove() {
+        System.out.println("testRemove");
+        Position position = new Position(3, 2);
         Board instance = new Board();
+        Square expResult = instance.getSquare(position);
         instance.put(new Piece(4, PlayerColor.BLUE), position);
-        Square expResult = null;
         instance.remove(position);
         Square result = instance.getSquare(position);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetTakenSquare() {
+        System.out.println("testGetTakenSquare");
+        Board instance = new Board();
+        Player player = new Player(BLUE);
+        Piece piece = new Piece(0, BLUE);
+        Piece piece2 = new Piece(5, RED);
+        Piece piece3 = new Piece(6, BLUE);
+        Position position = new Position(0, 3);
+        Position position2 = new Position(2, 3);
+        Position position3 = new Position(1, 2);
+        instance.put(piece, position);
+        instance.put(piece2, position2);
+        instance.put(piece3, position3);
+        List<Position> expResult = new ArrayList<>();
+        expResult.add(position);
+        expResult.add(position3);
+        List<Position> result = instance.getTakenSquare(player);
         assertEquals(expResult, result);
     }
 }

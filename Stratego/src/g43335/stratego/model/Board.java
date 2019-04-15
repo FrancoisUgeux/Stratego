@@ -124,8 +124,8 @@ public class Board {
         List position = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
-                if(player.getPieces().contains(getSquare(new Position(i,j)))){
-                    position.add(i,j);
+                if (isMyOwn(new Position(i, j), player.getColor())) {
+                    position.add(i, j);
                 }
             }
         }

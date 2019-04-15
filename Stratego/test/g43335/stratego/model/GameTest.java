@@ -2,6 +2,8 @@ package g43335.stratego.model;
 
 import static g43335.stratego.model.PlayerColor.BLUE;
 import static g43335.stratego.model.PlayerColor.RED;
+import g43335.stratego.model.pieces.Flag;
+import g43335.stratego.model.pieces.General;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
@@ -21,10 +23,10 @@ public class GameTest {
 
     @Before
     public void setUp() throws Exception {
-        defaultBoard[0][1].put(new Piece(0, RED));
-        defaultBoard[3][2].put(new Piece(9, RED));
-        defaultBoard[4][2].put(new Piece(0, BLUE));
-        defaultBoard[4][1].put(new Piece(9, BLUE));
+        defaultBoard[0][1].put(new Flag(0, RED));
+        defaultBoard[3][2].put(new General(9, RED));
+        defaultBoard[4][2].put(new Flag(0, BLUE));
+        defaultBoard[4][1].put(new General(9, BLUE));
     }
 
     @Test

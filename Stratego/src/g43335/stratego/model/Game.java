@@ -3,6 +3,7 @@ package g43335.stratego.model;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -147,5 +148,20 @@ public class Game implements Model {
     @Override
     public Player getCurrent() {
         return current;
+    }
+
+    public boolean hasMoves(Player player) {
+        List positions = board.getTakenSquare(player);
+        Iterator<Position> iterator = positions.iterator();
+        Boolean hasMove = false;
+        while (iterator.hasNext() && !hasMove) {
+            Position position = iterator.next();
+            for (Direction direction : Direction.values()) {
+                if (board.isInside(position.next(direction))) {
+                    hasMove = true;
+                }
+            }
+        }
+        return hasMove;
     }
 }
