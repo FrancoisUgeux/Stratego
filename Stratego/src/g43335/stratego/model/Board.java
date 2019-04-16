@@ -16,11 +16,11 @@ public class Board {
      * Initialize the board to 5 row and 4 column.
      */
     public Board() {
-        int rows = 5;
-        int columns = 4;
-        squares = new Square[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        final int ROWS = 5;
+        final int COLUMNS = 4;
+        squares = new Square[ROWS][COLUMNS];
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
                 squares[i][j] = new Square();
             }
         }
