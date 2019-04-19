@@ -95,14 +95,6 @@ public class GameTest {
         instance.select(4, 2);
     }
 
-    @Test
-    public void testSelectOnePiece() {
-        System.out.println("testSelectOnePiece");
-        Game instance = new Game();
-        instance.initialize();
-        Position expResult = new Position(3, 2);
-    }
-
     @Test(expected = NullPointerException.class)
     public void testGetSelectedWhenSelectedNull() {
         System.out.println("testGetSelectedWhenSelectedNull");
@@ -114,11 +106,10 @@ public class GameTest {
     @Test
     public void testGetSelected() {
         System.out.println("testGetSelected");
+        Piece expResult = new Piece(0, RED);
         Game instance = new Game();
         instance.initialize();
-        Position position = new Position(0, 1);
-        Position expResult = new Position(3, 2);
-        instance.select(3, 2);
+        instance.select(0, 1);
         Piece result = instance.getSelected();
         assertEquals(expResult, result);
     }
@@ -136,13 +127,14 @@ public class GameTest {
         System.out.println("testGetMoves");
         Game instance = new Game();
         instance.initialize();
-        instance.select(0, 1);
+        instance.select(3, 2);
         List<Move> expResult = new ArrayList();
-        Position start = new Position(0, 1);
-        Piece piece = new Piece(0, RED);
-        expResult.add(new Move(piece, start, new Position(1, 1)));
-        expResult.add(new Move(piece, start, new Position(0, 0)));
-        expResult.add(new Move(piece, start, new Position(0, 2)));
+        Position start = new Position(3, 2);
+        Piece piece = new Piece(9, RED);
+        expResult.add(new Move(piece, start, new Position(2, 2)));
+        expResult.add(new Move(piece, start, new Position(4, 2)));
+        expResult.add(new Move(piece, start, new Position(3, 1)));
+        expResult.add(new Move(piece, start, new Position(3, 3)));
         List<Move> result = instance.getMoves();
         assertEquals(expResult, result);
     }
@@ -243,5 +235,31 @@ public class GameTest {
         Square[][] expResult = defaultBoard;
         Square[][] result = instance.getBoard();
         assertArrayEquals(expResult, result);
+    }
+
+    @Test
+    public void testSwapPlayers() {
+        System.out.println("testSwapPlayers");
+        Game instance = new Game();
+        instance.initialize();
+        PlayerColor expResult = new Player(PlayerColor.BLUE).getColor();
+        instance.swapPlayers();
+        PlayerColor result = instance.getCurrent().getColor();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGetCurrent(){
+        Game instance = new Game();
+        instance.initialize();
+        Player expResult = new Player(PlayerColor.RED);
+        Player result = instance.getCurrent();
+    }
+    
+    @Test
+    public void testHasMovesWhenOk(){
+        Game instance = new Game();
+        instance.initialize();
+        
     }
 }

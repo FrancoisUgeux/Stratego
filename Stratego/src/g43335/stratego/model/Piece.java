@@ -54,9 +54,6 @@ public class Piece {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
         final Piece other = (Piece) obj;
         if (this.rank != other.rank) {
             return false;

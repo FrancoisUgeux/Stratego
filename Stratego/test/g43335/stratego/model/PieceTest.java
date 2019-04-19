@@ -88,46 +88,39 @@ public class PieceTest {
     }
 
     @Test
-    public void equalsFalseOtherObject() {
-        Piece piece1 = new Piece(10, BLUE);
-        String piece2 = "abcd";
-        assertFalse(piece1.equals(piece2));
-    }
-
-    @Test
     public void equalsFalseNull() {
         Piece piece1 = new Piece(10, BLUE);
         assertFalse(piece1.equals(null));
     }
-    
+
     @Test
-    public void testIsStronger(){
+    public void testIsStronger() {
         System.out.println("isStronger");
         Piece instance = new Piece(5, RED);
         Piece other = new Piece(4, BLUE);
         assertTrue(instance.isStronger(other));
     }
-    
+
     @Test
-    public void testIsStrongerWhenSameRank(){
+    public void testIsStrongerWhenSameRank() {
         System.out.println("isStrongerWhenSameRank");
         Piece instance = new Piece(5, RED);
-        Piece other = new Piece (5, BLUE);
+        Piece other = new Piece(5, BLUE);
         assertFalse(instance.isStronger(other));
     }
-    
+
     @Test
-    public void testHasSameRank(){
+    public void testHasSameRank() {
         System.out.println("hasSameRank");
-        Piece instance = new Piece(10,RED);
+        Piece instance = new Piece(10, RED);
         Piece other = new Piece(10, BLUE);
         assertTrue(instance.hasSameRank(other));
     }
-    
-        @Test
-    public void testHasSameRankWhenDifferent(){
-            System.out.println("hasSameRankWhenDifferent");
-        Piece instance = new Piece(3,RED);
+
+    @Test
+    public void testHasSameRankWhenDifferent() {
+        System.out.println("hasSameRankWhenDifferent");
+        Piece instance = new Piece(3, RED);
         Piece other = new Piece(5, BLUE);
         assertFalse(instance.hasSameRank(other));
     }

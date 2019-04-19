@@ -75,4 +75,12 @@ public class PositionTest {
         assertFalse(position1.equals(null));
     }
 
+    @Test
+    public void testNext() {
+        System.out.println("testNext");
+        Position instance = new Position(3, 2);
+        Position expResult = new Position(4,2);
+        Position result = instance.next(Direction.DOWN);
+        assertEquals(expResult, result);
+    }
 }

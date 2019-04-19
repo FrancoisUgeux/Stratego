@@ -121,14 +121,14 @@ public class Board {
     }
 
     public List<Position> getTakenSquare(Player player) {
-        List position = new ArrayList();
+        List<Position> positions = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
                 if (isMyOwn(new Position(i, j), player.getColor())) {
-                    position.add(i, j);
+                    positions.add(new Position(i, j));
                 }
             }
         }
-        return position;
+        return positions;
     }
 }
