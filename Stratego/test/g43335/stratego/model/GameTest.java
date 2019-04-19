@@ -6,9 +6,9 @@ import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -130,12 +130,19 @@ public class GameTest {
         instance.select(3, 2);
         List<Move> expResult = new ArrayList();
         Position start = new Position(3, 2);
-        Piece piece = new Piece(9, RED);
+        Piece piece = new General(9, RED);
         expResult.add(new Move(piece, start, new Position(2, 2)));
         expResult.add(new Move(piece, start, new Position(4, 2)));
         expResult.add(new Move(piece, start, new Position(3, 1)));
         expResult.add(new Move(piece, start, new Position(3, 3)));
         List<Move> result = instance.getMoves();
+        /*assertThat(result, hasItems(
+                    new Move(piece, start, new Position(2,2)),
+                    new Move(piece, start, new Position(4,2)),
+                    new Move(piece, start, new Position(3,1)),
+                    new Move(piece, start, new Position(3,3))));*/
+        //assertTrue(result.containsAll(expResult));
+        //assertTrue(expResult.equals(result));
         assertEquals(expResult, result);
     }
 
@@ -247,19 +254,19 @@ public class GameTest {
         PlayerColor result = instance.getCurrent().getColor();
         assertEquals(expResult, result);
     }
-    
+
     @Test
-    public void testGetCurrent(){
+    public void testGetCurrent() {
         Game instance = new Game();
         instance.initialize();
         Player expResult = new Player(PlayerColor.RED);
         Player result = instance.getCurrent();
     }
-    
+
     @Test
-    public void testHasMovesWhenOk(){
+    public void testHasMovesWhenOk() {
         Game instance = new Game();
         instance.initialize();
-        
+
     }
 }
