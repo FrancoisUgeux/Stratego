@@ -42,4 +42,6 @@ public interface Model {
     void apply(Move move);
     
     Player getCurrent();
+    
+    List<Player> getWinners();
 }

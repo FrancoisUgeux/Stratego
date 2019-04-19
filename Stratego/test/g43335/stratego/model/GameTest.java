@@ -256,17 +256,12 @@ public class GameTest {
     }
 
     @Test
-    public void testGetCurrent() {
+    public void testHasMoves() {
         Game instance = new Game();
         instance.initialize();
-        Player expResult = new Player(PlayerColor.RED);
-        Player result = instance.getCurrent();
-    }
-
-    @Test
-    public void testHasMovesWhenOk() {
-        Game instance = new Game();
-        instance.initialize();
-
+        Player player = new Player(BLUE);
+        boolean expResult = true;
+        boolean result = instance.hasMoves(player);
+        assertEquals(expResult, result);
     }
 }

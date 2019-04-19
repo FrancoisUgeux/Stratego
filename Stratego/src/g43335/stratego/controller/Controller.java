@@ -57,7 +57,7 @@ public class Controller {
 
             if (command.matches("quit|Quit|QUIT")) {
                 view.quit();
-                view.displayOver();
+                view.displayOver(game.getWinners());
                 System.exit(0);
             } else if (command.matches("select\\s\\d\\s\\d"
                     + "|Select\\s\\d\\s\\d"
@@ -79,9 +79,13 @@ public class Controller {
                         Matcher m1 = p1.matcher(command);
                         m1.find();
                         int selectedMove = Integer.parseInt(m1.group());
-                        System.out.println(selectedMove);
-                        Move move = game.getMoves().get(selectedMove);
-                        game.apply(move);
+                        if (selectedMove >= 0
+                                && selectedMove < game.getMoves().size()) {
+                            System.out.println(selectedMove);
+                            Move move = game.getMoves().get(selectedMove);
+                            game.apply(move);
+                        }
+
                     }
                 }
 
@@ -91,7 +95,7 @@ public class Controller {
             }
         }
         if (game.isOver()) {
-            view.displayOver();
+            view.displayOver(game.getWinners());
         }
     }
 }

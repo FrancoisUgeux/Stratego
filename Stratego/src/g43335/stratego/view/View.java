@@ -117,8 +117,17 @@ public class View {
     /**
      * Display a message when the game is over.
      */
-    public void displayOver() {
-        System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+    public void displayOver(List<Player> winners) {
+        for (Player winner : winners) {
+            if (winner.getColor() == BLUE) {
+                System.out.println(ANSI_BLUE + "Congratulation "
+                        + winner.getColor() + ANSI_RESET);
+            } else {
+                System.out.println(ANSI_RED + "Congratulation "
+                        + winner.getColor() + ANSI_RESET);
+            }
+            System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+        }
     }
 
     public void displaySelected(Piece piece) {

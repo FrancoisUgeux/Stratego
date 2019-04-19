@@ -1,7 +1,7 @@
 package g43335.stratego.model;
 
+import g43335.stratego.model.pieces.Flag;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -94,5 +94,16 @@ public class Player {
         if (!pieces.isEmpty()) {
             pieces.remove(piece);
         }
+    }
+
+    public boolean hasFlag() {
+        boolean hasAFlag = false;
+        for (int i = 0; i < getPieces().size(); i++) {
+            if (getPieces().get(i).getRank() == 0) {
+                hasAFlag = true;
+            }
+        }
+        return hasAFlag;
+        //return getPieces().contains(0);
     }
 }

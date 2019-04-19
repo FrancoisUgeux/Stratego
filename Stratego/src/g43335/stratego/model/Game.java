@@ -62,7 +62,8 @@ public class Game implements Model {
      */
     @Override
     public boolean isOver() {
-        return false;
+        return (!hasMoves(current) && !hasMoves(opponent)) || (!current.hasFlag()
+                || !opponent.hasFlag());
     }
 
     /**
@@ -140,9 +141,11 @@ public class Game implements Model {
     }
 
     public void swapPlayers() {
-        Player temp = current;
-        current = opponent;
-        opponent = temp;
+        if (hasMoves(opponent)) {
+            Player temp = current;
+            current = opponent;
+            opponent = temp;
+        }
     }
 
     @Override
@@ -163,5 +166,25 @@ public class Game implements Model {
             }
         }
         return hasMove;
+    }
+
+    @Override
+    public List<Player> getWinners() {
+        if (!isOver()) {
+            throw new IllegalArgumentException("Game must be over");
+        }
+        List<Player> winner = new ArrayList();
+        if ((!current.hasFlag() && !opponent.hasFlag())
+                || (!hasMoves(current) && !hasMoves(opponent))
+                || (!current.hasFlag() && !hasMoves(opponent))
+                || (!opponent.hasFlag() && !hasMoves(current))) {
+                winner.add(current);
+                winner.add(opponent);
+        }else if(!current.hasFlag() || !hasMoves(current)){
+            winner.add(opponent);
+        }else{
+            winner.add(current);
+        }
+        return winner;
     }
 }
