@@ -12,7 +12,7 @@ public class Square {
     private Piece piece;
 
     /**
-     * constructor that set a square to null if there is no piece on it.
+     * Constructor that set a square to null if there is no piece on it.
      */
     public Square() {
         piece = null;
@@ -52,6 +52,7 @@ public class Square {
     }
 
     /**
+     * Get the piece of the current case.
      *
      * @return the piece of the current case.
      */
@@ -76,14 +77,28 @@ public class Square {
         this.piece = piece;
     }
 
+    /**
+     * Check if a square is free.
+     *
+     * @return true if the square is free.
+     */
     public boolean isFree() {
         return (piece == null);
     }
 
+    /**
+     * Check if a piece on a square belong to a player.
+     *
+     * @param color is the color of the player to check.
+     * @return true if this piece belong to the player
+     */
     public boolean isMyOwn(PlayerColor color) {
         return !(piece == null || piece.getColor() != color);
     }
 
+    /**
+     * Remove the piece from this square.
+     */
     public void remove() {
         piece = null;
     }

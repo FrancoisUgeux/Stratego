@@ -42,11 +42,11 @@ public class Controller {
     }
 
     /**
-     * start the game and call view to display the different message and the
+     * Start the game and call view to display the different message and the
      * board. Then ask and verify the different command to progress in the game.
-     * Select will extract the two int from the command to use them
-     * moves call displayMoves
-     * apply extract the int from the command and apply the related moves 
+     * Select will extract the two int from the command to use them. Moves call
+     * displayMoves. Apply extract the int from the command and apply the
+     * related moves.
      */
     public void startGame() {
         view.displayHelp();

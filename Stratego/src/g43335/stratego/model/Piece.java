@@ -62,6 +62,7 @@ public class Piece {
     }
 
     /**
+     * Get the rank of the piece.
      *
      * @return the rank of the piece.
      */
@@ -70,18 +71,31 @@ public class Piece {
     }
 
     /**
+     * Get the color of the piece.
      *
      * @return the color of the piece.
      */
     public PlayerColor getColor() {
         return color;
     }
-    
-    public boolean isStronger(Piece other){
-        return(this.rank > other.getRank());
+
+    /**
+     * Determines if another piece is stronger than the current piece.
+     *
+     * @param other is the other piece.
+     * @return true if the current piece is stronger than the other one.
+     */
+    public boolean isStronger(Piece other) {
+        return (this.rank > other.getRank());
     }
-    
-    public boolean hasSameRank(Piece other){
-        return(this.rank == other.getRank());
+
+    /**
+     * Determines if another piece has the same rank than the current piece.
+     *
+     * @param other is the other piece.
+     * @return true if the other and current piece have the same rank.
+     */
+    public boolean hasSameRank(Piece other) {
+        return (this.rank == other.getRank());
     }
 }

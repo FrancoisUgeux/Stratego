@@ -59,6 +59,7 @@ public class Position {
     }
 
     /**
+     * Get the row.
      *
      * @return the row.
      */
@@ -67,6 +68,7 @@ public class Position {
     }
 
     /**
+     * Get the column.
      *
      * @return the column.
      */
@@ -74,6 +76,12 @@ public class Position {
         return column;
     }
 
+    /**
+     * Give the next position in a direction
+     *
+     * @param direction is the direction to check.
+     * @return the position in this direction.
+     */
     public Position next(Direction direction) {
         Position position = new Position(row + direction.getRow(),
                 column + direction.getColumn());

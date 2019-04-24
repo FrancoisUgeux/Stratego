@@ -66,6 +66,7 @@ public class Player {
     }
 
     /**
+     * Get the color of the player.
      *
      * @return the color of the player.
      */
@@ -74,8 +75,9 @@ public class Player {
     }
 
     /**
+     * Get the pieces of the player.
      *
-     * @return the pieces of a player.
+     * @return the pieces of the player.
      */
     public ArrayList<Piece> getPieces() {
         return pieces;
@@ -90,12 +92,22 @@ public class Player {
         pieces.add(piece);
     }
 
+    /**
+     * Remove a piece from the list of the player.
+     *
+     * @param piece is the piece to remove.
+     */
     public void remove(Piece piece) {
         if (!pieces.isEmpty()) {
             pieces.remove(piece);
         }
     }
 
+    /**
+     * Determines if the player has a flag.
+     *
+     * @return true if the player has a flag.
+     */
     public boolean hasFlag() {
         boolean hasAFlag = false;
         for (int i = 0; i < getPieces().size(); i++) {
@@ -104,6 +116,5 @@ public class Player {
             }
         }
         return hasAFlag;
-        //return getPieces().contains(0);
     }
 }

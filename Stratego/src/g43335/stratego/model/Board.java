@@ -87,7 +87,8 @@ public class Board {
     }
 
     /**
-     *  Check if a position is empty/available.
+     * Check if a position is empty/available.
+     *
      * @param position is the position to verify.
      * @return true if the position is available.
      */
@@ -100,7 +101,8 @@ public class Board {
     }
 
     /**
-     *  Check if a position belong to the player
+     * Check if a position belong to the player
+     *
      * @param position is the position to verify.
      * @param color is the color of the player.
      * @return true if there is a piece from this player on this position.
@@ -117,6 +119,7 @@ public class Board {
 
     /**
      * get the piece on a position.
+     *
      * @param position is the position to verify.
      * @return the piece on this position.
      */
@@ -129,6 +132,7 @@ public class Board {
 
     /**
      * Remove a piece on a position of the board.
+     *
      * @param position is the position from the piece we need to remove.
      */
     public void remove(Position position) {
@@ -142,7 +146,8 @@ public class Board {
 
     /**
      * Make a list of all the position where a player as a piece.
-     * @param player is the player to verify. 
+     *
+     * @param player is the player to verify.
      * @return a list containing all the square taked by this player.
      */
     public List<Position> getTakenSquare(Player player) {

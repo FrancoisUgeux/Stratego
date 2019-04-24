@@ -62,7 +62,7 @@ public class Game implements Model {
      */
     @Override
     public boolean isOver() {
-        if(board == null){
+        if (board == null) {
             return false;
         }
         return (!hasMoves(current) && !hasMoves(opponent)) || (!current.hasFlag()
@@ -81,6 +81,7 @@ public class Game implements Model {
 
     /**
      * select a piece and assign it to the attribute "selected".
+     *
      * @param row is the row of the piece to select.
      * @param column is the column of the piece to select.
      */
@@ -99,7 +100,8 @@ public class Game implements Model {
     }
 
     /**
-     * get the selected piece.
+     * Get the selected piece.
+     *
      * @return the piece selected piece.
      */
     @Override
@@ -111,7 +113,8 @@ public class Game implements Model {
     }
 
     /**
-     * create a list of moves availables for the selected piece.
+     * Create a list of moves availables for the selected piece.
+     *
      * @return the list of moves availables fot the selected piece.
      */
     @Override
@@ -134,7 +137,8 @@ public class Game implements Model {
     }
 
     /**
-     * apply the chosed move from the list of moves.
+     * Apply the chosed move from the list of moves.
+     *
      * @param move is the list of moves available for the selected piece.
      */
     @Override
@@ -161,7 +165,7 @@ public class Game implements Model {
     }
 
     /**
-     * exchange the status of each player.
+     * Exchange the status of each player.
      */
     public void swapPlayers() {
         if (hasMoves(opponent)) {
@@ -172,7 +176,8 @@ public class Game implements Model {
     }
 
     /**
-     * get the current player.
+     * Get the current player.
+     *
      * @return the current player.
      */
     @Override
@@ -182,6 +187,7 @@ public class Game implements Model {
 
     /**
      * Check if a player has some moves available.
+     *
      * @param player is the player to check for some moves.
      * @return true if the player has at least one move available.
      */
@@ -201,8 +207,9 @@ public class Game implements Model {
     }
 
     /**
+     * Determines the winner(s).
      *
-     * @return
+     * @return the list of winner(s).
      */
     @Override
     public List<Player> getWinners() {
@@ -214,11 +221,11 @@ public class Game implements Model {
                 || (!hasMoves(current) && !hasMoves(opponent))
                 || (!current.hasFlag() && !hasMoves(opponent))
                 || (!opponent.hasFlag() && !hasMoves(current))) {
-                winner.add(current);
-                winner.add(opponent);
-        }else if(!current.hasFlag() || !hasMoves(current)){
+            winner.add(current);
             winner.add(opponent);
-        }else{
+        } else if (!current.hasFlag() || !hasMoves(current)) {
+            winner.add(opponent);
+        } else {
             winner.add(current);
         }
         return winner;
