@@ -129,6 +129,10 @@ public class View {
             System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
         }
     }
+    
+    public void displayOver(){
+        System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+    }
 
     public void displaySelected(Piece piece) {
         switch (piece.getRank()) {

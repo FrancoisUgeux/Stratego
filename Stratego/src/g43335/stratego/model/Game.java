@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * This class assemble all the other class in model and initialize the different
- * data
+ * data.
  *
  * @author G43335
  */
@@ -62,6 +62,9 @@ public class Game implements Model {
      */
     @Override
     public boolean isOver() {
+        if(board == null){
+            return false;
+        }
         return (!hasMoves(current) && !hasMoves(opponent)) || (!current.hasFlag()
                 || !opponent.hasFlag());
     }
@@ -76,6 +79,11 @@ public class Game implements Model {
         return board.getSquares();
     }
 
+    /**
+     * select a piece and assign it to the attribute "selected".
+     * @param row is the row of the piece to select.
+     * @param column is the column of the piece to select.
+     */
     @Override
     public void select(int row, int column) {
         if (!board.isInside(new Position(row, column))) {
@@ -90,6 +98,10 @@ public class Game implements Model {
         selected = new Position(row, column);
     }
 
+    /**
+     * get the selected piece.
+     * @return the piece selected piece.
+     */
     @Override
     public Piece getSelected() {
         if (selected == null) {
@@ -98,6 +110,10 @@ public class Game implements Model {
         return board.getPiece(selected);
     }
 
+    /**
+     * create a list of moves availables for the selected piece.
+     * @return the list of moves availables fot the selected piece.
+     */
     @Override
     public List<Move> getMoves() {
         if (selected == null) {
@@ -117,6 +133,10 @@ public class Game implements Model {
         return moves;
     }
 
+    /**
+     * apply the chosed move from the list of moves.
+     * @param move is the list of moves available for the selected piece.
+     */
     @Override
     public void apply(Move move) {
         if (move == null) {
@@ -140,6 +160,9 @@ public class Game implements Model {
         swapPlayers();
     }
 
+    /**
+     * exchange the status of each player.
+     */
     public void swapPlayers() {
         if (hasMoves(opponent)) {
             Player temp = current;
@@ -148,11 +171,20 @@ public class Game implements Model {
         }
     }
 
+    /**
+     * get the current player.
+     * @return the current player.
+     */
     @Override
     public Player getCurrent() {
         return current;
     }
 
+    /**
+     * Check if a player has some moves available.
+     * @param player is the player to check for some moves.
+     * @return true if the player has at least one move available.
+     */
     public boolean hasMoves(Player player) {
         List positions = board.getTakenSquare(player);
         Iterator<Position> iterator = positions.iterator();
@@ -168,6 +200,10 @@ public class Game implements Model {
         return hasMove;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Player> getWinners() {
         if (!isOver()) {

@@ -1,6 +1,7 @@
 package g43335.stratego.model;
 
 /**
+ * This enum contains the possible directions.
  *
  * @author G43335
  */

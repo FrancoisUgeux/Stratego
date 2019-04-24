@@ -86,6 +86,11 @@ public class Board {
         squares[position.getRow()][position.getColumn()].put(piece);
     }
 
+    /**
+     *  Check if a position is empty/available.
+     * @param position is the position to verify.
+     * @return true if the position is available.
+     */
     public boolean isFree(Position position) {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
@@ -94,6 +99,12 @@ public class Board {
                 == null);
     }
 
+    /**
+     *  Check if a position belong to the player
+     * @param position is the position to verify.
+     * @param color is the color of the player.
+     * @return true if there is a piece from this player on this position.
+     */
     public boolean isMyOwn(Position position, PlayerColor color) {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
@@ -104,6 +115,11 @@ public class Board {
                         .getPiece().getColor() != color);
     }
 
+    /**
+     * get the piece on a position.
+     * @param position is the position to verify.
+     * @return the piece on this position.
+     */
     public Piece getPiece(Position position) {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
@@ -111,6 +127,10 @@ public class Board {
         return (squares[position.getRow()][position.getColumn()].getPiece());
     }
 
+    /**
+     * Remove a piece on a position of the board.
+     * @param position is the position from the piece we need to remove.
+     */
     public void remove(Position position) {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
@@ -120,6 +140,11 @@ public class Board {
         }
     }
 
+    /**
+     * Make a list of all the position where a player as a piece.
+     * @param player is the player to verify. 
+     * @return a list containing all the square taked by this player.
+     */
     public List<Position> getTakenSquare(Player player) {
         List<Position> positions = new ArrayList();
         for (int i = 0; i < squares.length; i++) {
