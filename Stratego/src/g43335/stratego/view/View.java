@@ -16,14 +16,6 @@ import java.util.Scanner;
  */
 public class View {
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     private final Scanner in;
 
     /**
@@ -37,7 +29,7 @@ public class View {
      * Display a welcome message.
      */
     public void initialize() {
-        System.out.println(ANSI_BLUE + "Welcome to Stratego" + ANSI_RESET);
+        System.out.println(Color.BLUE + "Welcome to Stratego" + Color.RESET);
     }
 
     /**
@@ -45,8 +37,8 @@ public class View {
      */
     public void quit() {
         System.out.println();
-        System.out.println(ANSI_BLUE + "See you soon for a new game"
-                + ANSI_RESET);
+        System.out.println(Color.BLUE + "See you soon for a new game"
+                + Color.RESET);
     }
 
     /**
@@ -55,7 +47,7 @@ public class View {
      * @param message an error message.
      */
     public void displayError(String message) {
-        System.out.println(ANSI_RED_BACKGROUND + ANSI_WHITE + message + ANSI_RESET);
+        System.out.println(Color.RED_BACKGROUND + Color.WHITE + message + Color.RESET);
     }
 
     /**
@@ -97,17 +89,17 @@ public class View {
             System.out.print("row#0" + i + " || ");
             for (Square square : squares[i]) {
                 if (square.getPiece() == null) {
-                    System.out.print(" |" + ANSI_WHITE_BACKGROUND
-                            + "  " + ANSI_RESET + "| ");
+                    System.out.print(" |" + Color.WHITE_BACKGROUND
+                            + "  " + Color.RESET + "| ");
                 } else {
                     if (square.getPiece().getColor() == PlayerColor.BLUE) {
-                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_BLUE;
+                        ColorPiece = Color.WHITE_BACKGROUND + Color.BLUE;
                     } else {
-                        ColorPiece = ANSI_WHITE_BACKGROUND + ANSI_RED;
+                        ColorPiece = Color.WHITE_BACKGROUND + Color.RED;
                     }
                     System.out.print(" |" + ColorPiece);
                     displaySelected(square.getPiece());
-                    System.out.print(ANSI_RESET + " |");
+                    System.out.print(Color.RESET + " |");
                 }
             }
             System.out.println("");
@@ -120,18 +112,18 @@ public class View {
     public void displayOver(List<Player> winners) {
         for (Player winner : winners) {
             if (winner.getColor() == BLUE) {
-                System.out.println(ANSI_BLUE + "Congratulation "
-                        + winner.getColor() + ANSI_RESET);
+                System.out.println(Color.BLUE + "Congratulation "
+                        + winner.getColor() + Color.RESET);
             } else {
-                System.out.println(ANSI_RED + "Congratulation "
-                        + winner.getColor() + ANSI_RESET);
+                System.out.println(Color.RED + "Congratulation "
+                        + winner.getColor() + Color.RESET);
             }
-            System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+            System.out.println(Color.RED + "GAME OVER!" + Color.RESET);
         }
     }
-    
-    public void displayOver(){
-        System.out.println(ANSI_RED + "GAME OVER!" + ANSI_RESET);
+
+    public void displayOver() {
+        System.out.println(Color.RED + "GAME OVER!" + Color.RESET);
     }
 
     public void displaySelected(Piece piece) {
@@ -268,13 +260,13 @@ public class View {
         for (int i = 0; i < moves.size(); i++) {
             System.out.print(i + " - ");
             if (moves.get(i).getPiece().getColor() == BLUE) {
-                System.out.print(ANSI_BLUE);
+                System.out.print(Color.BLUE);
                 displaySelectedFullName(moves.get(i).getPiece());
-                System.out.print(ANSI_RESET);
+                System.out.print(Color.RESET);
             } else {
-                System.out.print(ANSI_RED);
+                System.out.print(Color.RED);
                 displaySelectedFullName(moves.get(i).getPiece());
-                System.out.print(ANSI_RESET);
+                System.out.print(Color.RESET);
             }
             System.out.println(" can move to the row "
                     + moves.get(i).getEnd().getRow() + " and the column "
@@ -284,24 +276,24 @@ public class View {
 
     public void displayCurrentPlayer(Player player) {
         if (player.getColor() == BLUE) {
-            System.out.println("your turn" + ANSI_BLUE
-                    + " Blue player" + ANSI_RESET);
+            System.out.println("your turn" + Color.BLUE
+                    + " Blue player" + Color.RESET);
         } else {
-            System.out.println("Your turn" + ANSI_RED
-                    + " Red player" + ANSI_RESET);
+            System.out.println("Your turn" + Color.RED
+                    + " Red player" + Color.RESET);
         }
     }
 
     public void displaySelectedPiece(Piece piece) {
         if (piece.getColor() == BLUE) {
-            System.out.print(ANSI_BLUE);
+            System.out.print(Color.BLUE);
             displaySelectedFullName(piece);
-            System.out.print(ANSI_RESET);
+            System.out.print(Color.RESET);
             System.out.println(" selected");
         } else {
-            System.out.print(ANSI_RED);
+            System.out.print(Color.RED);
             displaySelectedFullName(piece);
-            System.out.print(ANSI_RESET);
+            System.out.print(Color.RESET);
             System.out.println(" selected");
         }
     }
