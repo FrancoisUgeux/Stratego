@@ -154,4 +154,16 @@ public class SquareTest {
         boolean result = instance.isMyOwn(BLUE);
         assertEquals(expResult, result);
     }
+
+    @Test
+    public void testRemove() {
+        System.out.println("testRemove");
+        Square instance = new Square();
+        Piece expResult = null;
+        instance.put(new Piece(0, BLUE));
+        instance.remove();
+        Piece result = instance.getPiece();
+        assertEquals(expResult, result);
+
+    }
 }
