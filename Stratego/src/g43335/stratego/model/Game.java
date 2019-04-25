@@ -123,7 +123,7 @@ public class Game implements Model {
             throw new NullPointerException("selected piece cannot be null");
         }
 
-        Piece piece = board.getPiece(new Position(selected.getRow(), selected.getColumn()));
+        Piece piece = board.getPiece(selected);
         Position start = new Position(selected.getRow(), selected.getColumn());
         List<Move> moves = new ArrayList<>();
         for (Direction direction : Direction.values()) {
