@@ -129,7 +129,8 @@ public class View {
      * is no winner yet.
      */
     public void displayOver() {
-        System.out.println(Color.RED + "GAME OVER!" + Color.RESET);
+        System.out.println("\nAre you not entertained ? why would you leave already ?");
+        System.out.print(Color.RED + "GAME OVER!" + Color.RESET);
     }
 
     /**

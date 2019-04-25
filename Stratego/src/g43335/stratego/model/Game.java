@@ -130,7 +130,9 @@ public class Game implements Model {
             if (board.isInside(selected.next(direction))) {
                 Position end = new Position(selected.next(direction).getRow(),
                         selected.next(direction).getColumn());
-                moves.add(new Move(piece, start, end));
+                if (!board.isMyOwn(end, current.getColor())) {
+                    moves.add(new Move(piece, start, end));
+                }
             }
         }
         return moves;

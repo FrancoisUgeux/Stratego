@@ -58,8 +58,8 @@ public class Controller {
             Matcher m = p.matcher(command);
 
             if (command.matches("quit|Quit|QUIT")) {
-                view.quit();
                 view.displayOver();
+                view.quit();
                 System.exit(0);
             } else if (command.matches("select\\s\\d\\s\\d"
                     + "|Select\\s\\d\\s\\d"
