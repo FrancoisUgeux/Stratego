@@ -1,7 +1,8 @@
 package g43335.stratego.view;
 
 /**
- *
+ * Contains a set of color for the view.
+ * 
  * @author G43335
  */
 public class Color {

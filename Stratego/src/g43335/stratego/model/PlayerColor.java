@@ -7,6 +7,12 @@ package g43335.stratego.model;
  */
 public enum PlayerColor {
 
+    /**
+     * Red color.
+     */
     RED,
+    /**
+     * Blue color.
+     */
     BLUE
 }

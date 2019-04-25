@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Player {
 
     private PlayerColor color;
-    private ArrayList<Piece> pieces;
+    private final ArrayList<Piece> pieces;
 
     /**
      * Initialize a player with a color and a List of pieces.
