@@ -241,7 +241,6 @@ public class BoardTest {
     @Test(expected = IllegalArgumentException.class)
     public void testIsFreeWhenPositionIsOutside() {
         System.out.println("testIsFreeWhenPositionIsOutside");
-        Piece piece = new Piece(1, PlayerColor.BLUE);
         Position position = new Position(6, 2);
         Board instance = new Board();
         instance.isFree(position);
@@ -363,9 +362,19 @@ public class BoardTest {
         instance.put(piece, position);
         instance.put(piece2, position2);
         instance.put(piece3, position3);
-        List<Position> expResult = new ArrayList<>();
+        List<Position> expResult = new ArrayList();
         expResult.add(position);
         expResult.add(position3);
+        List<Position> result = instance.getTakenSquare(player);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGetTakenSquareWhenNoSquareTaken(){
+        System.out.println("testGetTakenSquareWhenNoSquareTaken");
+        Board instance = new Board();
+        Player player = new Player(BLUE);
+        List<Position> expResult = new ArrayList();
         List<Position> result = instance.getTakenSquare(player);
         assertEquals(expResult, result);
     }
