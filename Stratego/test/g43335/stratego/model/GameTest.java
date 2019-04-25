@@ -61,6 +61,15 @@ public class GameTest {
     }
 
     @Test
+    public void testIsOverWhenGameEnd() {
+        System.out.println("testIsOverWhenGameEnd");
+        Game instance = new Game();
+        instance.initialize();
+        instance.getCurrent().remove(new Piece(0, RED));
+        assertTrue(instance.isOver());
+    }
+
+    @Test
     public void testGetBoardWhenGameBegin() {
         System.out.println("testGetBoardWhenGameBegin");
         Game instance = new Game();
@@ -247,11 +256,22 @@ public class GameTest {
     }
 
     @Test
-    public void testSwapPlayers() {
-        System.out.println("testSwapPlayers");
+    public void testSwapPlayersRedToBlue() {
+        System.out.println("testSwapPlayersRedToBlue");
         Game instance = new Game();
         instance.initialize();
         PlayerColor expResult = new Player(PlayerColor.BLUE).getColor();
+        instance.swapPlayers();
+        PlayerColor result = instance.getCurrent().getColor();
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testSwapPlayersBlueToRed() {
+        System.out.println("testSwapPlayersRedToBlue");
+        Game instance = new Game();
+        instance.initialize();
+        PlayerColor expResult = new Player(PlayerColor.RED).getColor();
+        instance.swapPlayers();
         instance.swapPlayers();
         PlayerColor result = instance.getCurrent().getColor();
         assertEquals(expResult, result);
