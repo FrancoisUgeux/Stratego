@@ -5,9 +5,8 @@ import static g43335.stratego.model.PlayerColor.RED;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -128,21 +127,13 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         instance.select(3, 2);
-        List<Move> expResult = new ArrayList();
         Position start = new Position(3, 2);
         Piece piece = new General(9, RED);
-        expResult.add(new Move(piece, start, new Position(2, 2)));
-        expResult.add(new Move(piece, start, new Position(4, 2)));
-        expResult.add(new Move(piece, start, new Position(3, 1)));
-        expResult.add(new Move(piece, start, new Position(3, 3)));
         List<Move> result = instance.getMoves();
-        /*assertThat(result, hasItems(
-                    new Move(piece, start, new Position(2,2)),
-                    new Move(piece, start, new Position(4,2)),
-                    new Move(piece, start, new Position(3,1)),
-                    new Move(piece, start, new Position(3,3))));*/
-        //assertTrue(result.containsAll(expResult));
-        //assertTrue(expResult.equals(result));
+        List<Move> expResult = Arrays.asList(new Move(piece, start, new Position(2, 2)),
+                new Move(piece, start, new Position(4, 2)),
+                new Move(piece, start, new Position(3, 1)),
+                new Move(piece, start, new Position(3, 3)));
         assertEquals(expResult, result);
     }
 

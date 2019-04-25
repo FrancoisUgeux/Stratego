@@ -1,6 +1,5 @@
 package g43335.stratego.model;
 
-import g43335.stratego.model.pieces.Flag;
 import java.util.ArrayList;
 import java.util.Objects;
 

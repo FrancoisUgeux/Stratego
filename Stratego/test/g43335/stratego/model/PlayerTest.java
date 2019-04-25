@@ -128,9 +128,10 @@ public class PlayerTest {
     
     @Test
     public void testHasFlag(){
-        Game game = new Game();
-        game.initialize();
-        Player instance = new Player(PlayerColor.RED);
-        assertTrue(instance.hasFlag());
+        Player instance = new Player(PlayerColor.BLUE);
+        instance.addPiece(new Piece(0,PlayerColor.BLUE));
+        boolean expResult = true;
+        boolean result = instance.hasFlag();
+        assertEquals(expResult,result);
     }
 }

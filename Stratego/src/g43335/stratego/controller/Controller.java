@@ -4,7 +4,6 @@ import g43335.stratego.model.Model;
 import g43335.stratego.model.Move;
 import g43335.stratego.model.Player;
 import g43335.stratego.view.View;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

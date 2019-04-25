@@ -107,7 +107,9 @@ public class View {
     }
 
     /**
-     * Display a message when the game is over.
+     * Display a message when the game is over. and display the winner(s).
+     *
+     * @param winners
      */
     public void displayOver(List<Player> winners) {
         for (Player winner : winners) {
@@ -122,10 +124,19 @@ public class View {
         }
     }
 
+    /**
+     * Display a message when the game is over using the command quit so there
+     * is no winner yet.
+     */
     public void displayOver() {
         System.out.println(Color.RED + "GAME OVER!" + Color.RESET);
     }
 
+    /**
+     * Display the abbreviation of a piece.
+     *
+     * @param piece the piece to display.
+     */
     public void displaySelected(Piece piece) {
         switch (piece.getRank()) {
             case 0:
@@ -167,6 +178,11 @@ public class View {
         }
     }
 
+    /**
+     * Display the full name of a piece with the right color.
+     *
+     * @param piece the piece to display.
+     */
     public void displaySelectedFullName(Piece piece) {
         switch (piece.getRank()) {
             case 0:
@@ -256,6 +272,11 @@ public class View {
         }
     }
 
+    /**
+     * Display all the moves available for a selected piece.
+     *
+     * @param moves is the list of moves available.
+     */
     public void displayMoves(List<Move> moves) {
         for (int i = 0; i < moves.size(); i++) {
             System.out.print(i + " - ");
@@ -274,6 +295,11 @@ public class View {
         }
     }
 
+    /**
+     * Display the current player.
+     *
+     * @param player is the current player.
+     */
     public void displayCurrentPlayer(Player player) {
         if (player.getColor() == BLUE) {
             System.out.println("your turn" + Color.BLUE
@@ -284,6 +310,11 @@ public class View {
         }
     }
 
+    /**
+     * Display the selected piece.
+     *
+     * @param piece the piece to display.
+     */
     public void displaySelectedPiece(Piece piece) {
         if (piece.getColor() == BLUE) {
             System.out.print(Color.BLUE);
