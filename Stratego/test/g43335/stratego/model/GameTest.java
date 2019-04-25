@@ -93,16 +93,16 @@ public class GameTest {
         instance.initialize();
         instance.select(4, 2);
     }
-    
+
     @Test
-    public void testSelect(){
+    public void testSelect() {
         System.out.println("testSelect");
         Game instance = new Game();
         instance.initialize();
         Piece expResult = new General(9, RED);
         instance.select(3, 2);
         Piece result = instance.getSelected();
-        assertEquals(expResult,result);
+        assertEquals(expResult, result);
     }
 
     @Test(expected = NullPointerException.class)
@@ -259,11 +259,27 @@ public class GameTest {
 
     @Test
     public void testHasMoves() {
+        System.out.println("testHasMoves");
         Game instance = new Game();
         instance.initialize();
         Player player = new Player(BLUE);
         boolean expResult = true;
         boolean result = instance.hasMoves(player);
         assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testHasMovesWhenNoMoves() {
+        System.out.println("testHasMovesWhenNoMoves");
+        Game instance = new Game();
+        instance.initialize();
+        Player player = instance.getCurrent();
+        boolean expResult = false;
+        Square[][] square = instance.getBoard();
+        square[3][2].remove();
+        square[0][1].remove();
+        boolean result = instance.hasMoves(player);
+        assertEquals(expResult, result);
+
     }
 }
