@@ -110,6 +110,14 @@ public class PieceTest {
     }
 
     @Test
+    public void testIsStrongerWhenWeaker() {
+        System.out.println("isStrongerWhenWeaker");
+        Piece instance = new Piece(5, RED);
+        Piece other = new Piece(7, BLUE);
+        assertFalse(instance.isStronger(other));
+    }
+
+    @Test
     public void testHasSameRank() {
         System.out.println("hasSameRank");
         Piece instance = new Piece(10, RED);
@@ -118,10 +126,18 @@ public class PieceTest {
     }
 
     @Test
-    public void testHasSameRankWhenDifferent() {
-        System.out.println("hasSameRankWhenDifferent");
+    public void testHasSameRankWhenIsStronger() {
+        System.out.println("hasSameRankWhenIsStronger");
         Piece instance = new Piece(3, RED);
         Piece other = new Piece(5, BLUE);
+        assertFalse(instance.hasSameRank(other));
+    }
+
+    @Test
+    public void testHasSameRankWhenIsWeaker() {
+        System.out.println("hasSameRankWhenIsWeaker");
+        Piece instance = new Piece(3, RED);
+        Piece other = new Piece(1, BLUE);
         assertFalse(instance.hasSameRank(other));
     }
 }

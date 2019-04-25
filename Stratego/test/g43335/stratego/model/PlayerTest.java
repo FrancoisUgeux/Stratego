@@ -136,6 +136,14 @@ public class PlayerTest {
     }
 
     @Test
+    public void testHasFlagWhenNoFlag() {
+        Player instance = new Player(PlayerColor.BLUE);
+        boolean expResult = false;
+        boolean result = instance.hasFlag();
+        assertEquals(expResult, result);
+    }
+
+    @Test
     public void testRemove() {
         Player instance = new Player(PlayerColor.BLUE);
         Piece piece1 = new Piece(0, PlayerColor.BLUE);
