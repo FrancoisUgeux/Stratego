@@ -159,6 +159,8 @@ public class Game implements Model {
             opponent.remove(attacked);
         } else if (assailant.hasSameRank(attacked)) {
             board.remove(target);
+            current.remove(assailant);
+            opponent.remove(attacked);
         } else {
             current.remove(assailant);
         }
