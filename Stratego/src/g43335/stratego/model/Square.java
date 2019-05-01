@@ -10,11 +10,14 @@ import java.util.Objects;
 public class Square {
 
     private Piece piece;
+    private SquareType type;
 
     /**
-     * Constructor that set a square to null if there is no piece on it.
+     * Constructor that set a square to null if there is no piece on it
+     * and initialize a type for the square.
      */
-    public Square() {
+    public Square(SquareType type) {
+        this.type = type;
         piece = null;
     }
 
@@ -101,5 +104,9 @@ public class Square {
      */
     public void remove() {
         piece = null;
+    }
+    
+    public boolean isLand(){
+        return type == SquareType.LAND;
     }
 }

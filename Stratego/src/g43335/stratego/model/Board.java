@@ -21,7 +21,7 @@ public class Board {
         squares = new Square[ROWS][COLUMNS];
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                squares[i][j] = new Square();
+                squares[i][j] = new Square(SquareType.LAND);
             }
         }
     }

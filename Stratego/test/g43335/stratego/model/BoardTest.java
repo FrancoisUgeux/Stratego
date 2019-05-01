@@ -11,11 +11,11 @@ import org.junit.Test;
 public class BoardTest {
 
     private final Square[][] defaultBoard = {
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()}};
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
 
     @Test
     public void testGetSquareWhenSquareIsFill() {
@@ -23,7 +23,7 @@ public class BoardTest {
         Position position = new Position(3, 2);
         Board instance = new Board();
         instance.put(new Piece(4, PlayerColor.BLUE), position);
-        Square expResult = new Square();
+        Square expResult = new Square(SquareType.LAND);
         expResult.put(new Piece(4, PlayerColor.BLUE));
         Square result = instance.getSquare(position);
         assertEquals(expResult, result);
@@ -34,7 +34,7 @@ public class BoardTest {
         System.out.println("testGetSquareWhenSquareIsEmpty");
         Position position = new Position(0, 1);
         Board instance = new Board();
-        Square expResult = new Square();
+        Square expResult = new Square(SquareType.LAND);
         Square result = instance.getSquare(position);
         assertEquals(expResult, result);
     }
@@ -76,7 +76,7 @@ public class BoardTest {
         Position position = new Position(0, 0);
         Board instance = new Board();
         instance.put(piece, position);
-        Square expResult = new Square();
+        Square expResult = new Square(SquareType.LAND);
         expResult.put(piece);
         Square result = instance.getSquare(position);
         assertEquals(expResult, result);
@@ -314,7 +314,7 @@ public class BoardTest {
         Board instance = new Board();
         Position position = new Position(1, 2);
         instance.put(new Piece(4, PlayerColor.BLUE), position);
-        Square expResult = new Square();
+        Square expResult = new Square(SquareType.LAND);
         expResult.put(new Piece(4, PlayerColor.BLUE));
         Square result = instance.getSquare(position);
         assertEquals(expResult, result);

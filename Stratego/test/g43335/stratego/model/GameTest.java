@@ -14,11 +14,11 @@ import org.junit.Test;
 public class GameTest {
 
     private final Square[][] defaultBoard = {
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()},
-        {new Square(), new Square(), new Square(), new Square()}};
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
 
     @Before
     public void setUp() throws Exception {
