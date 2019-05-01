@@ -127,9 +127,9 @@ public class Game implements Model {
         Position start = selected;
         List<Move> moves = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            if (board.isInside(selected.next(direction))) {
-                Position end = new Position(selected.next(direction).getRow(),
-                        selected.next(direction).getColumn());
+            Position end = selected.next(direction);
+            if (board.isInside(end)
+                    && piece.canCross(board.getSquare(end))) {
                 if (!board.isMyOwn(end, current.getColor())) {
                     moves.add(new Move(piece, start, end));
                 }
@@ -202,7 +202,9 @@ public class Game implements Model {
         while (iterator.hasNext() && !hasMove) {
             Position position = iterator.next();
             for (Direction direction : Direction.values()) {
-                if (board.isInside(position.next(direction))) {
+                Position nextPos = position.next(direction);
+                if (board.isInside(nextPos)
+                        && board.getSquare(nextPos).isLand()) {
                     hasMove = true;
                 }
             }
