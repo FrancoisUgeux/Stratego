@@ -14,11 +14,12 @@ import org.junit.Test;
 public class GameTest {
 
     private final Square[][] defaultBoard = {
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
 
     @Before
     public void setUp() throws Exception {
@@ -265,6 +266,7 @@ public class GameTest {
         PlayerColor result = instance.getCurrent().getColor();
         assertEquals(expResult, result);
     }
+
     @Test
     public void testSwapPlayersBlueToRed() {
         System.out.println("testSwapPlayersRedToBlue");

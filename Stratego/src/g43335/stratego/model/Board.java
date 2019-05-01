@@ -13,15 +13,20 @@ public class Board {
     private final Square[][] squares;
 
     /**
-     * Initialize the board to 5 row and 4 column.
+     * Initialize the board to 6 row and 5 column. With a lake in
+     * (2,1)(2,2)(2,3) and the others square in land.
      */
     public Board() {
-        final int ROWS = 5;
-        final int COLUMNS = 4;
+        final int ROWS = 6;
+        final int COLUMNS = 5;
         squares = new Square[ROWS][COLUMNS];
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                squares[i][j] = new Square(SquareType.LAND);
+                if ((i == 1) && (j == 0 || j == 1 || j == 2)) {
+                    squares[i][j] = new Square(SquareType.WATER);
+                } else {
+                    squares[i][j] = new Square(SquareType.LAND);
+                }
             }
         }
     }

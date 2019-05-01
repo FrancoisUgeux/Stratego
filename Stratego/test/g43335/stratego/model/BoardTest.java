@@ -11,11 +11,12 @@ import org.junit.Test;
 public class BoardTest {
 
     private final Square[][] defaultBoard = {
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
-        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)},
+        {new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND), new Square(SquareType.LAND)}};
 
     @Test
     public void testGetSquareWhenSquareIsFill() {
@@ -193,7 +194,7 @@ public class BoardTest {
     @Test
     public void testIsInsideWhenOutsideBoundaryDown() {
         System.out.println("testIsInsideWhenOutsideBoundaryDown");
-        Position position = new Position(5, 2);
+        Position position = new Position(6, 2);
         Board instance = new Board();
         boolean expResult = false;
         boolean result = instance.isInside(position);
@@ -213,7 +214,7 @@ public class BoardTest {
     @Test
     public void testIsInsideWhenOutsideBoundaryRight() {
         System.out.println("testIsInsideWhenOutsideBoundaryRight");
-        Position position = new Position(3, 4);
+        Position position = new Position(3, 5);
         Board instance = new Board();
         boolean expResult = false;
         boolean result = instance.isInside(position);
@@ -368,9 +369,9 @@ public class BoardTest {
         List<Position> result = instance.getTakenSquare(player);
         assertEquals(expResult, result);
     }
-    
+
     @Test
-    public void testGetTakenSquareWhenNoSquareTaken(){
+    public void testGetTakenSquareWhenNoSquareTaken() {
         System.out.println("testGetTakenSquareWhenNoSquareTaken");
         Board instance = new Board();
         Player player = new Player(BLUE);
