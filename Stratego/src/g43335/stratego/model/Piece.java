@@ -98,4 +98,8 @@ public class Piece {
     public boolean hasSameRank(Piece other) {
         return (this.rank == other.getRank());
     }
+    
+    public boolean canCross(Square square){
+        return square.isLand();
+    }
 }
