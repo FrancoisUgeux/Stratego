@@ -22,7 +22,7 @@ public class Board {
         squares = new Square[ROWS][COLUMNS];
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                if ((i == 1) && (j == 0 || j == 1 || j == 2)) {
+                if ((i == 2) && (j == 1 || j == 2 || j == 3)) {
                     squares[i][j] = new Square(SquareType.WATER);
                 } else {
                     squares[i][j] = new Square(SquareType.LAND);

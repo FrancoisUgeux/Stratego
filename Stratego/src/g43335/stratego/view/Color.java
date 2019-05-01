@@ -15,4 +15,5 @@ public class Color {
     static final String BLACK = "\u001B[30m";
     static final String RED_BACKGROUND = "\u001B[41m";
     static final String WHITE_BACKGROUND = "\u001B[47m";
+    static final String BLUE_BACKGROUND = "\u001B[44m";
 }

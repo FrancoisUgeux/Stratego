@@ -1,7 +1,9 @@
 package g43335.stratego.model;
 
+import g43335.stratego.model.pieces.Bomb;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
+import g43335.stratego.model.pieces.Miner;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,12 +37,20 @@ public class Game implements Model {
         board = new Board();
         board.put(new Flag(0, PlayerColor.RED), new Position(0, 1));
         board.put(new General(9, PlayerColor.RED), new Position(3, 2));
+        board.put(new Bomb(11, PlayerColor.RED), new Position(1, 0));
+        board.put(new Miner(3, PlayerColor.RED), new Position(3, 0));
         board.put(new Flag(0, PlayerColor.BLUE), new Position(4, 2));
         board.put(new General(9, PlayerColor.BLUE), new Position(4, 1));
+        board.put(new Bomb(11, PlayerColor.BLUE), new Position(4, 3));
+        board.put(new Miner(3, PlayerColor.BLUE), new Position(5, 0));
         current.addPiece(new Flag(0, PlayerColor.RED));
         current.addPiece(new General(9, PlayerColor.RED));
+        current.addPiece(new Bomb(11, PlayerColor.RED));
+        current.addPiece(new Miner(3, PlayerColor.RED));
         opponent.addPiece(new Flag(0, PlayerColor.BLUE));
         opponent.addPiece(new General(9, PlayerColor.BLUE));
+        opponent.addPiece(new Bomb(11, PlayerColor.BLUE));
+        opponent.addPiece(new Miner(3, PlayerColor.BLUE));
     }
 
     /**

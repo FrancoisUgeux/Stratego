@@ -2,8 +2,10 @@ package g43335.stratego.model;
 
 import static g43335.stratego.model.PlayerColor.BLUE;
 import static g43335.stratego.model.PlayerColor.RED;
+import g43335.stratego.model.pieces.Bomb;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
+import g43335.stratego.model.pieces.Miner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +27,12 @@ public class GameTest {
     public void setUp() throws Exception {
         defaultBoard[0][1].put(new Flag(0, RED));
         defaultBoard[3][2].put(new General(9, RED));
+        defaultBoard[1][0].put(new Bomb(11, RED));
+        defaultBoard[3][0].put(new Miner(3, RED));
         defaultBoard[4][2].put(new Flag(0, BLUE));
         defaultBoard[4][1].put(new General(9, BLUE));
+        defaultBoard[4][3].put(new Bomb(11, BLUE));
+        defaultBoard[5][0].put(new Miner(3, BLUE));
     }
 
     @Test
@@ -151,8 +157,7 @@ public class GameTest {
         Position start = new Position(3, 2);
         Piece piece = new General(9, RED);
         List<Move> result = instance.getMoves();
-        List<Move> expResult = Arrays.asList(new Move(piece, start, new Position(2, 2)),
-                new Move(piece, start, new Position(4, 2)),
+        List<Move> expResult = Arrays.asList(new Move(piece, start, new Position(4, 2)),
                 new Move(piece, start, new Position(3, 1)),
                 new Move(piece, start, new Position(3, 3)));
         assertEquals(expResult, result);
@@ -300,6 +305,8 @@ public class GameTest {
         Square[][] square = instance.getBoard();
         square[3][2].remove();
         square[0][1].remove();
+        square[1][0].remove();
+        square[3][0].remove();
         boolean result = instance.hasMoves(player);
         assertEquals(expResult, result);
 

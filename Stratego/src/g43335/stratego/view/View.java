@@ -83,14 +83,19 @@ public class View {
     public void displayBoard(Square[][] squares) {
         String ColorPiece;
         System.out.println();
-        System.out.println("  col# ||  |00|  |01|  |02|  |03|");
+        System.out.println("  col# ||  |00|  |01|  |02|  |03|  |04|");
         System.out.println("======================================");
         for (int i = 0; i < squares.length; i++) {
             System.out.print("row#0" + i + " || ");
             for (Square square : squares[i]) {
                 if (square.getPiece() == null) {
-                    System.out.print(" |" + Color.WHITE_BACKGROUND
-                            + "  " + Color.RESET + "| ");
+                    if (square.isLand()) {
+                        System.out.print(" |" + Color.WHITE_BACKGROUND
+                                + "  " + Color.RESET + "| ");
+                    } else {
+                        System.out.print(" |" + Color.BLUE_BACKGROUND
+                                + "  " + Color.RESET + "| ");
+                    }
                 } else {
                     if (square.getPiece().getColor() == PlayerColor.BLUE) {
                         ColorPiece = Color.WHITE_BACKGROUND + Color.BLUE;
