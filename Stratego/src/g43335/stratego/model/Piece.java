@@ -30,14 +30,13 @@ public class Piece {
     }
 
     public Piece(int rank, PlayerColor color, int nbSteps) {
-        if(nbSteps < 0){
+        if (nbSteps < 0) {
             throw new IllegalArgumentException("The number of steps cannot be negative");
         }
         this.rank = rank;
         this.color = color;
         this.nbSteps = nbSteps;
     }
-    
 
     /**
      * Create a hash code value for the object.
@@ -89,6 +88,10 @@ public class Piece {
      */
     public PlayerColor getColor() {
         return color;
+    }
+
+    public int getNbSteps() {
+        return nbSteps;
     }
 
     /**

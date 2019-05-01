@@ -126,6 +126,7 @@ public class Game implements Model {
      * Create a list of moves availables for the selected piece.
      *
      * @return the list of moves availables fot the selected piece.
+     * @throws NullPointerException if there is no piece selected.
      */
     @Override
     public List<Move> getMoves() {
@@ -137,11 +138,18 @@ public class Game implements Model {
         Position start = selected;
         List<Move> moves = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            Position end = selected.next(direction);
-            if (board.isInside(end)
-                    && piece.canCross(board.getSquare(end))) {
-                if (!board.isMyOwn(end, current.getColor())) {
-                    moves.add(new Move(piece, start, end));
+            Position end;
+            if (piece.getNbSteps() != 0) {
+                if (piece.getNbSteps() == 1) {
+                    end = selected.next(direction);
+                } else {
+                    end = selected.next(direction).next(direction);
+                }
+                if (board.isInside(end)
+                        && piece.canCross(board.getSquare(end))) {
+                    if (!board.isMyOwn(end, current.getColor())) {
+                        moves.add(new Move(piece, start, end));
+                    }
                 }
             }
         }
@@ -152,6 +160,7 @@ public class Game implements Model {
      * Apply the chosed move from the list of moves.
      *
      * @param move is the list of moves available for the selected piece.
+     * @throws NullPointerException if there is no move.
      */
     @Override
     public void apply(Move move) {
