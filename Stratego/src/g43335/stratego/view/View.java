@@ -63,6 +63,10 @@ public class View {
         System.out.println("apply movesNumber: move the piece "
                 + "with the selected move");
     }
+    
+//    public void displayAskNbSteps(){
+//        System.out.println("Enter the number of steps you want (1/2)");
+//    }
 
     /**
      * Ask to enter a command and return this command.
@@ -104,7 +108,7 @@ public class View {
                     }
                     System.out.print(" |" + ColorPiece);
                     displaySelected(square.getPiece());
-                    System.out.print(Color.RESET + " |");
+                    System.out.print(Color.RESET + "| ");
                 }
             }
             System.out.println("");

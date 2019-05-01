@@ -5,7 +5,10 @@ import static g43335.stratego.model.PlayerColor.RED;
 import g43335.stratego.model.pieces.Bomb;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
+import g43335.stratego.model.pieces.Marshal;
 import g43335.stratego.model.pieces.Miner;
+import g43335.stratego.model.pieces.Scout;
+import g43335.stratego.model.pieces.Spy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +31,17 @@ public class GameTest {
         defaultBoard[0][1].put(new Flag(RED));
         defaultBoard[3][2].put(new General(RED));
         defaultBoard[1][0].put(new Bomb(RED));
-        defaultBoard[3][0].put(new Miner(RED));
+        defaultBoard[5][0].put(new Miner(RED));
+        defaultBoard[0][3].put(new Marshal(RED));
+        defaultBoard[5][4].put(new Spy(RED));
+        defaultBoard[1][4].put(new Scout(RED));
         defaultBoard[4][2].put(new Flag(BLUE));
         defaultBoard[4][1].put(new General(BLUE));
-        defaultBoard[4][3].put(new Bomb(BLUE));
-        defaultBoard[5][0].put(new Miner(BLUE));
+        defaultBoard[5][1].put(new Bomb(BLUE));
+        defaultBoard[2][0].put(new Miner(BLUE));
+        defaultBoard[5][3].put(new Marshal(BLUE));
+        defaultBoard[0][4].put(new Spy(BLUE));
+        defaultBoard[4][4].put(new Scout(BLUE));
     }
 
     @Test
@@ -304,9 +313,10 @@ public class GameTest {
         boolean expResult = false;
         Square[][] square = instance.getBoard();
         square[3][2].remove();
-        square[0][1].remove();
-        square[1][0].remove();
-        square[3][0].remove();
+        square[0][3].remove();
+        square[1][4].remove();
+        square[5][4].remove();
+        square[5][0].remove();
         boolean result = instance.hasMoves(player);
         assertEquals(expResult, result);
 

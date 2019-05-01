@@ -3,7 +3,10 @@ package g43335.stratego.model;
 import g43335.stratego.model.pieces.Bomb;
 import g43335.stratego.model.pieces.Flag;
 import g43335.stratego.model.pieces.General;
+import g43335.stratego.model.pieces.Marshal;
 import g43335.stratego.model.pieces.Miner;
+import g43335.stratego.model.pieces.Scout;
+import g43335.stratego.model.pieces.Spy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,19 +41,31 @@ public class Game implements Model {
         board.put(new Flag(PlayerColor.RED), new Position(0, 1));
         board.put(new General(PlayerColor.RED), new Position(3, 2));
         board.put(new Bomb(PlayerColor.RED), new Position(1, 0));
-        board.put(new Miner(PlayerColor.RED), new Position(3, 0));
+        board.put(new Miner(PlayerColor.RED), new Position(5, 0));
+        board.put(new Marshal(PlayerColor.RED), new Position(0, 3));
+        board.put(new Spy(PlayerColor.RED), new Position(5, 4));
+        board.put(new Scout(PlayerColor.RED), new Position(1, 4));
         board.put(new Flag(PlayerColor.BLUE), new Position(4, 2));
         board.put(new General(PlayerColor.BLUE), new Position(4, 1));
-        board.put(new Bomb(PlayerColor.BLUE), new Position(4, 3));
-        board.put(new Miner(PlayerColor.BLUE), new Position(5, 0));
+        board.put(new Bomb(PlayerColor.BLUE), new Position(5, 1));
+        board.put(new Miner(PlayerColor.BLUE), new Position(2, 0));
+        board.put(new Marshal(PlayerColor.BLUE), new Position(5, 3));
+        board.put(new Spy(PlayerColor.BLUE), new Position(0, 4));
+        board.put(new Scout(PlayerColor.BLUE), new Position(4, 4));
         current.addPiece(new Flag(PlayerColor.RED));
         current.addPiece(new General(PlayerColor.RED));
         current.addPiece(new Bomb(PlayerColor.RED));
         current.addPiece(new Miner(PlayerColor.RED));
+        current.addPiece(new Marshal(PlayerColor.RED));
+        current.addPiece(new Spy(PlayerColor.RED));
+        current.addPiece(new Scout(PlayerColor.RED));
         opponent.addPiece(new Flag(PlayerColor.BLUE));
         opponent.addPiece(new General(PlayerColor.BLUE));
         opponent.addPiece(new Bomb(PlayerColor.BLUE));
         opponent.addPiece(new Miner(PlayerColor.BLUE));
+        opponent.addPiece(new Marshal(PlayerColor.BLUE));
+        opponent.addPiece(new Spy(PlayerColor.BLUE));
+        opponent.addPiece(new Scout(PlayerColor.BLUE));
     }
 
     /**
@@ -221,9 +236,11 @@ public class Game implements Model {
         while (iterator.hasNext() && !hasMove) {
             Position position = iterator.next();
             for (Direction direction : Direction.values()) {
+                int nbSteps = board.getSquare(position).getPiece().getNbSteps();
                 Position nextPos = position.next(direction);
                 if (board.isInside(nextPos)
-                        && board.getSquare(nextPos).isLand()) {
+                        && board.getSquare(nextPos).isLand()
+                        && nbSteps != 0) {
                     hasMove = true;
                 }
             }
