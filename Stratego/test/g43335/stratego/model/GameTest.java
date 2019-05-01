@@ -25,14 +25,14 @@ public class GameTest {
 
     @Before
     public void setUp() throws Exception {
-        defaultBoard[0][1].put(new Flag(0, RED));
-        defaultBoard[3][2].put(new General(9, RED));
-        defaultBoard[1][0].put(new Bomb(11, RED));
-        defaultBoard[3][0].put(new Miner(3, RED));
-        defaultBoard[4][2].put(new Flag(0, BLUE));
-        defaultBoard[4][1].put(new General(9, BLUE));
-        defaultBoard[4][3].put(new Bomb(11, BLUE));
-        defaultBoard[5][0].put(new Miner(3, BLUE));
+        defaultBoard[0][1].put(new Flag(RED));
+        defaultBoard[3][2].put(new General(RED));
+        defaultBoard[1][0].put(new Bomb(RED));
+        defaultBoard[3][0].put(new Miner(RED));
+        defaultBoard[4][2].put(new Flag(BLUE));
+        defaultBoard[4][1].put(new General(BLUE));
+        defaultBoard[4][3].put(new Bomb(BLUE));
+        defaultBoard[5][0].put(new Miner(BLUE));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class GameTest {
         System.out.println("testSelect");
         Game instance = new Game();
         instance.initialize();
-        Piece expResult = new General(9, RED);
+        Piece expResult = new General(RED);
         instance.select(3, 2);
         Piece result = instance.getSelected();
         assertEquals(expResult, result);
@@ -155,7 +155,7 @@ public class GameTest {
         instance.initialize();
         instance.select(3, 2);
         Position start = new Position(3, 2);
-        Piece piece = new General(9, RED);
+        Piece piece = new General(RED);
         List<Move> result = instance.getMoves();
         List<Move> expResult = Arrays.asList(new Move(piece, start, new Position(4, 2)),
                 new Move(piece, start, new Position(3, 1)),

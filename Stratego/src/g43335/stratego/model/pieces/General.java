@@ -16,7 +16,7 @@ public class General extends Piece {
      * @param rank of the General.
      * @param color of the General.
      */
-    public General(int rank, PlayerColor color) {
+    public General(PlayerColor color) {
         super(9, color);
     }
 

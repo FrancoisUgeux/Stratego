@@ -9,7 +9,7 @@ import g43335.stratego.model.PlayerColor;
  */
 public class Miner extends Piece {
 
-    public Miner(int rank, PlayerColor color) {
+    public Miner(PlayerColor color) {
         super(3, color);
     }
 

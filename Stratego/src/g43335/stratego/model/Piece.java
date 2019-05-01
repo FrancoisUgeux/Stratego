@@ -11,9 +11,10 @@ public class Piece {
 
     private int rank;
     private PlayerColor color;
+    private int nbSteps;
 
     /**
-     * Initialize a Piece with a rank and a color.
+     * Initialize a Piece with a rank, a color and a number of steps.
      *
      * @param rank is the rank of a piece.
      * @param color is the color of a piece.
@@ -25,7 +26,18 @@ public class Piece {
         }
         this.rank = rank;
         this.color = color;
+        nbSteps = 1;
     }
+
+    public Piece(int rank, PlayerColor color, int nbSteps) {
+        if(nbSteps < 0){
+            throw new IllegalArgumentException("The number of steps cannot be negative");
+        }
+        this.rank = rank;
+        this.color = color;
+        this.nbSteps = nbSteps;
+    }
+    
 
     /**
      * Create a hash code value for the object.
@@ -98,8 +110,8 @@ public class Piece {
     public boolean hasSameRank(Piece other) {
         return (this.rank == other.getRank());
     }
-    
-    public boolean canCross(Square square){
+
+    public boolean canCross(Square square) {
         return square.isLand();
     }
 }

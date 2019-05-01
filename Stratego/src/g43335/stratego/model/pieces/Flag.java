@@ -15,9 +15,10 @@ public class Flag extends Piece {
      *
      * @param rank of the Flag.
      * @param color of the Flag.
+     * @param nbSteps of the Flag
      */
-    public Flag(int rank, PlayerColor color) {
-        super(0, color);
+    public Flag(PlayerColor color) {
+        super(0, color, 0);
     }
 
 }
