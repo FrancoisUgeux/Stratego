@@ -172,6 +172,38 @@ public class GameTest {
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void testGetMovesForScout() {
+        System.out.println("testGetMovesForScout");
+        Game instance = new Game();
+        instance.initialize();
+        instance.select(1, 4);
+        Position start = new Position(1, 4);
+        Piece piece = new Scout(RED);
+        List<Move> result = instance.getMoves();
+        List<Move> expResult = Arrays.asList(new Move(piece, start, new Position(0, 4)),
+                new Move(piece, start, new Position(2, 4)),
+                new Move(piece, start, new Position(3, 4)),
+                new Move(piece, start, new Position(1, 3)),
+                new Move(piece, start, new Position(1, 2)));
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetMovesForBombOrFlag() {
+        System.out.println("testGetMovesForBombOrFlag");
+        Game instance = new Game();
+        instance.initialize();
+        instance.select(1, 0);
+        List<Move> result = instance.getMoves();
+        List<Move> expResult = new ArrayList();
+        assertEquals(expResult, result);
+        instance.select(0, 1);
+        List<Move> result1 = instance.getMoves();
+        List<Move> expResult1 = new ArrayList();
+        assertEquals(expResult1, result1);
+    }
+
     @Test(expected = NullPointerException.class)
     public void testApplyWhenNoMove() {
         System.out.println("testApplyWhenNoMove");
@@ -187,13 +219,13 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         List<Move> moves = new ArrayList();
-        Piece piece = new Piece(0, RED);
-        Position start = new Position(0, 1);
-        Position target = new Position(1, 1);
+        Piece piece = new Piece(10, RED);
+        Position start = new Position(0, 3);
+        Position target = new Position(1, 3);
         moves.add(new Move(piece, start, target));
         instance.apply(moves.get(0));
-        defaultBoard[0][1].remove();
-        defaultBoard[1][1].put(piece);
+        defaultBoard[0][3].remove();
+        defaultBoard[1][3].put(piece);
         Square[][] expResult = defaultBoard;
         Square[][] result = instance.getBoard();
         assertArrayEquals(expResult, result);
@@ -205,14 +237,14 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         List<Move> moves = new ArrayList();
-        Piece piece = new Piece(9, RED);
-        Position start = new Position(3, 2);
-        Position target = new Position(4, 2);
+        Piece piece = new Piece(10, RED);
+        Position start = new Position(0, 3);
+        Position target = new Position(0, 4);
         moves.add(new Move(piece, start, target));
         instance.apply(moves.get(0));
-        defaultBoard[3][2].remove();
-        defaultBoard[4][2].remove();
-        defaultBoard[4][2].put(piece);
+        defaultBoard[0][3].remove();
+        defaultBoard[0][4].remove();
+        defaultBoard[0][4].put(piece);
         Square[][] expResult = defaultBoard;
         Square[][] result = instance.getBoard();
         assertArrayEquals(expResult, result);
@@ -247,24 +279,12 @@ public class GameTest {
         Game instance = new Game();
         instance.initialize();
         List<Move> moves = new ArrayList();
-        Piece piece = new Piece(0, RED);
-        Position start = new Position(0, 1);
-        Position start2 = new Position(1, 1);
-        Position start3 = new Position(2, 1);
-        Position start4 = new Position(3, 1);
-        Position target = new Position(1, 1);
-        Position target2 = new Position(2, 1);
-        Position target3 = new Position(3, 1);
-        Position target4 = new Position(4, 1);
+        Piece piece = new Spy(RED);
+        Position start = new Position(5, 4);
+        Position target = new Position(4, 4);
         moves.add(new Move(piece, start, target));
-        moves.add(new Move(piece, start2, target2));
-        moves.add(new Move(piece, start3, target3));
-        moves.add(new Move(piece, start4, target4));
         instance.apply(moves.get(0));
-        instance.apply(moves.get(1));
-        instance.apply(moves.get(2));
-        instance.apply(moves.get(3));
-        defaultBoard[0][1].remove();
+        defaultBoard[5][4].remove();
         Square[][] expResult = defaultBoard;
         Square[][] result = instance.getBoard();
         assertArrayEquals(expResult, result);
@@ -319,6 +339,5 @@ public class GameTest {
         square[5][0].remove();
         boolean result = instance.hasMoves(player);
         assertEquals(expResult, result);
-
     }
 }

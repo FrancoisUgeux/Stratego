@@ -2,6 +2,7 @@ package g43335.stratego.model;
 
 import static g43335.stratego.model.PlayerColor.BLUE;
 import static g43335.stratego.model.PlayerColor.RED;
+import g43335.stratego.model.pieces.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -118,6 +119,30 @@ public class PieceTest {
     }
 
     @Test
+    public void testIsStrongerMarshallAttackedBySpy() {
+        System.out.println("testIsStrongerMarshallAttackedBySpy");
+        Piece instance = new Spy(RED);
+        Piece other = new Marshal(BLUE);
+        assertTrue(instance.isStronger(other));
+    }
+
+    @Test
+    public void testIsStrongerSpyAttackedByMarshal() {
+        System.out.println("testIsStrongerSpyAttackedByMarshal");
+        Piece instance = new Marshal(RED);
+        Piece other = new Spy(BLUE);
+        assertTrue(instance.isStronger(other));
+    }
+
+    @Test
+    public void testIsStrongerDeminerOnBomb() {
+        System.out.println("testIsStrongerDeminerOnBomb");
+        Piece instance = new Miner(RED);
+        Piece other = new Bomb(BLUE);
+        assertTrue(instance.isStronger(other));
+    }
+
+    @Test
     public void testHasSameRank() {
         System.out.println("hasSameRank");
         Piece instance = new Piece(10, RED);
@@ -139,5 +164,25 @@ public class PieceTest {
         Piece instance = new Piece(3, RED);
         Piece other = new Piece(1, BLUE);
         assertFalse(instance.hasSameRank(other));
+    }
+
+    @Test
+    public void testCanCrossOnLand() {
+        System.out.println("testCanCrossOnLand");
+        Piece instance = new Spy(RED);
+        Square square = new Square(SquareType.LAND);
+        boolean result = instance.canCross(square);
+        boolean expResult = true;
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCanCrossOnLake() {
+        System.out.println("testCanCrossOnLake");
+        Piece instance = new Spy(RED);
+        Square square = new Square(SquareType.WATER);
+        boolean result = instance.canCross(square);
+        boolean expResult = false;
+        assertEquals(expResult, result);
     }
 }
