@@ -50,7 +50,7 @@ public class Controller {
     public void startGame() {
         view.displayHelp();
         while (!game.isOver()) {
-            view.displayBoard(game.getBoard());
+            view.displayBoard(game.getBoard(), game.getCurrent());
             Player current = game.getCurrent();
             view.displayCurrentPlayer(current);
             String command = view.askCommand().toLowerCase();

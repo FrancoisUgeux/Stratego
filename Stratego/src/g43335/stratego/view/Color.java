@@ -2,7 +2,7 @@ package g43335.stratego.view;
 
 /**
  * Contains a set of color for the view.
- * 
+ *
  * @author G43335
  */
 public class Color {
@@ -16,4 +16,5 @@ public class Color {
     static final String RED_BACKGROUND = "\u001B[41m";
     static final String WHITE_BACKGROUND = "\u001B[47m";
     static final String BLUE_BACKGROUND = "\u001B[44m";
+    static final String CYAN_BACKGROUND = "\033[46m";
 }

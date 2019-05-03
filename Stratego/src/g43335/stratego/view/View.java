@@ -63,10 +63,6 @@ public class View {
         System.out.println("apply movesNumber: move the piece "
                 + "with the selected move");
     }
-    
-//    public void displayAskNbSteps(){
-//        System.out.println("Enter the number of steps you want (1/2)");
-//    }
 
     /**
      * Ask to enter a command and return this command.
@@ -84,8 +80,9 @@ public class View {
      *
      * @param squares represent each case of the board.
      */
-    public void displayBoard(Square[][] squares) {
+    public void displayBoard(Square[][] squares, Player current) {
         String ColorPiece;
+        String ColorBackground;
         System.out.println();
         System.out.println("  col# ||  |00|  |01|  |02|  |03|  |04|");
         System.out.println("======================================");
@@ -97,18 +94,26 @@ public class View {
                         System.out.print(" |" + Color.WHITE_BACKGROUND
                                 + "  " + Color.RESET + "| ");
                     } else {
-                        System.out.print(" |" + Color.BLUE_BACKGROUND
+                        System.out.print(" |" + Color.CYAN_BACKGROUND
                                 + "  " + Color.RESET + "| ");
                     }
                 } else {
                     if (square.getPiece().getColor() == PlayerColor.BLUE) {
                         ColorPiece = Color.WHITE_BACKGROUND + Color.BLUE;
+                        ColorBackground = Color.BLUE_BACKGROUND;
                     } else {
                         ColorPiece = Color.WHITE_BACKGROUND + Color.RED;
+                        ColorBackground = Color.RED_BACKGROUND;
                     }
-                    System.out.print(" |" + ColorPiece);
-                    displaySelected(square.getPiece());
-                    System.out.print(Color.RESET + "| ");
+                    if (square.getPiece().getColor() == current.getColor()) {
+                        System.out.print(" |" + ColorPiece);
+                        displaySelected(square.getPiece());
+                        System.out.print(Color.RESET + "| ");
+                    } else {
+                        System.out.print(" |" + ColorBackground + "  ");
+                        System.out.print(Color.RESET + "| ");
+                    }
+
                 }
             }
             System.out.println("");
