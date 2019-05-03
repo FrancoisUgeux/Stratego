@@ -96,6 +96,7 @@ public class Board {
      *
      * @param position is the position to verify.
      * @return true if the position is available.
+     * @throws IllegalArgumentException if the position is out of board.
      */
     public boolean isFree(Position position) {
         if (!isInside(position)) {
@@ -111,6 +112,7 @@ public class Board {
      * @param position is the position to verify.
      * @param color is the color of the player.
      * @return true if there is a piece from this player on this position.
+     * @throws IllegalArgumentException if the position is out of board.
      */
     public boolean isMyOwn(Position position, PlayerColor color) {
         if (!isInside(position)) {
@@ -127,6 +129,7 @@ public class Board {
      *
      * @param position is the position to verify.
      * @return the piece on this position.
+     * @throws IllegalArgumentException if the position is out of board.
      */
     public Piece getPiece(Position position) {
         if (!isInside(position)) {
@@ -139,6 +142,7 @@ public class Board {
      * Remove a piece on a position of the board.
      *
      * @param position is the position from the piece we need to remove.
+     * @throws IllegalArgumentException if the position is out of board.
      */
     public void remove(Position position) {
         if (!isInside(position)) {

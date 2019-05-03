@@ -19,6 +19,7 @@ public class Move {
      * @param piece is the piece to move.
      * @param start is the starting point of the piece.
      * @param end is the point of arrival of the piece.
+     * @throws NullPointerException if an attribute is null.
      */
     public Move(Piece piece, Position start, Position end) {
         if (piece == null || start == null || end == null) {

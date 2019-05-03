@@ -14,7 +14,7 @@ public class Piece {
     private int nbSteps;
 
     /**
-     * Initialize a Piece with a rank, a color and a number of steps.
+     * Initialize a Piece with a rank, a color and a default number of steps.
      *
      * @param rank is the rank of a piece.
      * @param color is the color of a piece.
@@ -29,6 +29,14 @@ public class Piece {
         nbSteps = 1;
     }
 
+    /**
+     * Initialize a Piece with a rank, a color and a number of steps.
+     *
+     * @param rank is the rank of a piece.
+     * @param color is the color of a piece.
+     * @param nbSteps is the number of steps of a piece.
+     * @throws IllegalArgumentException if the number of steps is negative.
+     */
     public Piece(int rank, PlayerColor color, int nbSteps) {
         if (nbSteps < 0) {
             throw new IllegalArgumentException("The number of steps cannot be negative");
@@ -90,6 +98,11 @@ public class Piece {
         return color;
     }
 
+    /**
+     * Get the number of steps of the piece.
+     *
+     * @return the number of steps of this piece.
+     */
     public int getNbSteps() {
         return nbSteps;
     }
@@ -114,6 +127,12 @@ public class Piece {
         return (this.rank == other.getRank());
     }
 
+    /**
+     * Inform if a square can be crossed.
+     *
+     * @param square is the square to verify
+     * @return true if it can be crossed.
+     */
     public boolean canCross(Square square) {
         return square.isLand();
     }

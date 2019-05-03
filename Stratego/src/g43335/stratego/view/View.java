@@ -79,6 +79,7 @@ public class View {
      * Display the game board.
      *
      * @param squares represent each case of the board.
+     * @param current is the current player.
      */
     public void displayBoard(Square[][] squares, Player current) {
         String ColorPiece;
@@ -123,7 +124,7 @@ public class View {
     /**
      * Display a message when the game is over. and display the winner(s).
      *
-     * @param winners
+     * @param winners is the list of the winners of this game.
      */
     public void displayOver(List<Player> winners) {
         for (Player winner : winners) {

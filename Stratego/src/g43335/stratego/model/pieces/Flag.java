@@ -11,11 +11,9 @@ import g43335.stratego.model.PlayerColor;
 public class Flag extends Piece {
 
     /**
-     * extends Piece to create a Flag with a rank of 0.
+     * extends Piece to create a Flag with a rank of 0 and number of step of 0.
      *
-     * @param rank of the Flag.
      * @param color of the Flag.
-     * @param nbSteps of the Flag
      */
     public Flag(PlayerColor color) {
         super(0, color, 0);

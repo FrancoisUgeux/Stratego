@@ -43,9 +43,9 @@ public class Controller {
     /**
      * Start the game and call view to display the different message and the
      * board. Then ask and verify the different command to progress in the game.
-     * Select will extract the two int from the command to use them. Moves call
-     * displayMoves. Apply extract the int from the command and apply the
-     * related moves.
+     * Select will extract the two int from the command to select a piece. Moves
+     * call displayMoves. Apply extract the int from the command and apply the
+     * related move.
      */
     public void startGame() {
         view.displayHelp();
@@ -86,7 +86,6 @@ public class Controller {
                             Move move = game.getMoves().get(selectedMove);
                             game.apply(move);
                         }
-
                     }
                 }
 

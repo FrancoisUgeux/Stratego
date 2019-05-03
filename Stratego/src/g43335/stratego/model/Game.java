@@ -1,12 +1,6 @@
 package g43335.stratego.model;
 
-import g43335.stratego.model.pieces.Bomb;
-import g43335.stratego.model.pieces.Flag;
-import g43335.stratego.model.pieces.General;
-import g43335.stratego.model.pieces.Marshal;
-import g43335.stratego.model.pieces.Miner;
-import g43335.stratego.model.pieces.Scout;
-import g43335.stratego.model.pieces.Spy;
+import g43335.stratego.model.pieces.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -109,6 +103,9 @@ public class Game implements Model {
      *
      * @param row is the row of the piece to select.
      * @param column is the column of the piece to select.
+     * @throws IllegalArgumentException if the position is out of board.
+     * @throws IllegalArgumentException if the position is empty.
+     * @throws IllegalArgumentException if the position belong to the opponent.
      */
     @Override
     public void select(int row, int column) {
@@ -128,6 +125,7 @@ public class Game implements Model {
      * Get the selected piece.
      *
      * @return the piece selected piece.
+     * @throws NullPointerException if there is no piece selected.
      */
     @Override
     public Piece getSelected() {
@@ -257,6 +255,7 @@ public class Game implements Model {
      * Determines the winner(s).
      *
      * @return the list of winner(s).
+     * @throws IllegalArgumentException if the game is not over.
      */
     @Override
     public List<Player> getWinners() {
