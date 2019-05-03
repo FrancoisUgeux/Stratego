@@ -69,21 +69,6 @@ public class Controller {
                 game.select(row, column);
                 view.displaySelectedPiece(game.getSelected());
                 command = view.askCommand();
-//                int nbSteps = game.getSelected().getNbSteps();
-//                if (game.getSelected().getRank() == 2) {
-//                    view.displayAskNbSteps();
-//                    if (command.matches("\\d")) {
-//                        Pattern p2 = Pattern.compile("\\d");
-//                        Matcher m2 = p2.matcher(command);
-//                        m2.find();
-//                        int choosedNbSteps = Integer.parseInt(m2.group());
-//                        if (choosedNbSteps == 1) {
-//                            nbSteps = 1;
-//                        } else {
-//                            nbSteps = 2;
-//                        }
-//                    }
-//                }
                 if (command.matches("moves|move")) {
                     if (game.getSelected() == null) {
                         view.displayError("You must select a piece before");

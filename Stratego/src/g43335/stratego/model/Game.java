@@ -148,22 +148,27 @@ public class Game implements Model {
         if (selected == null) {
             throw new NullPointerException("selected piece cannot be null");
         }
-
         Piece piece = getSelected();
         Position start = selected;
         List<Move> moves = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            Position end;
+            Position firstEnd;
+            Position secondEnd = null;
             if (piece.getNbSteps() != 0) {
                 if (piece.getNbSteps() == 1) {
-                    end = selected.next(direction);
+                    firstEnd = selected.next(direction);
                 } else {
-                    end = selected.next(direction).next(direction);
+                    firstEnd = selected.next(direction);
+                    secondEnd = firstEnd.next(direction);
                 }
-                if (board.isInside(end)
-                        && piece.canCross(board.getSquare(end))) {
-                    if (!board.isMyOwn(end, current.getColor())) {
-                        moves.add(new Move(piece, start, end));
+                if (board.isInside(firstEnd)
+                        && piece.canCross(board.getSquare(firstEnd))
+                        && !board.isMyOwn(firstEnd, current.getColor())) {
+                    moves.add(new Move(piece, start, firstEnd));
+                    if (piece.getNbSteps() == 2 && board.isInside(secondEnd)
+                            && piece.canCross(board.getSquare(secondEnd))
+                            && board.isFree(secondEnd)) {
+                        moves.add(new Move(piece, start, secondEnd));
                     }
                 }
             }

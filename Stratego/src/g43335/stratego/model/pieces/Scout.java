@@ -12,5 +12,4 @@ public class Scout extends Piece {
     public Scout(PlayerColor color) {
         super(2, color, 2);
     }
-
 }
