@@ -17,7 +17,7 @@ public class Flag extends Piece {
      * @param color of the Flag.
      */
     public Flag(int rank, PlayerColor color) {
-        super(0, color);
+        super(0, color); // à quoi sert le paramètre rank ?
     }
 
 }

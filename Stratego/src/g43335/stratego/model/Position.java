@@ -85,7 +85,7 @@ public class Position {
     public Position next(Direction direction) {
         Position position = new Position(row + direction.getRow(),
                 column + direction.getColumn());
-        return position;
+        return position; //sdr inutile de délcarer une variable.
     }
 
 }

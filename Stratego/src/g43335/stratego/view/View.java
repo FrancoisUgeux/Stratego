@@ -16,6 +16,8 @@ import java.util.Scanner;
  */
 public class View {
 
+    //sdr mettre les commandes en évidence (couleur)
+    
     private final Scanner in;
 
     /**
@@ -186,7 +188,7 @@ public class View {
      */
     public void displaySelectedFullName(Piece piece) {
         switch (piece.getRank()) {
-            case 0:
+            case 0: //sdr déterminer la couleur et le rank dans des méthodes sépérées pour éviter la redondance
                 if (piece.getColor() == BLUE) {
                     System.out.print("Blue flag");
                 } else {

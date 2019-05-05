@@ -97,7 +97,7 @@ public class Player {
      * @param piece is the piece to remove.
      */
     public void remove(Piece piece) {
-        if (!pieces.isEmpty()) {
+        if (!pieces.isEmpty()) { //sdr je ne comprend pas pourquoi tu fais ce test.
             pieces.remove(piece);
         }
     }
@@ -110,7 +110,7 @@ public class Player {
     public boolean hasFlag() {
         boolean hasAFlag = false;
         for (int i = 0; i < getPieces().size(); i++) {
-            if (getPieces().get(i).getRank() == 0) {
+            if (getPieces().get(i).getRank() == 0) { //sdr c'est préférable de vérifier le type de l'instance
                 hasAFlag = true;
             }
         }

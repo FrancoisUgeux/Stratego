@@ -34,7 +34,7 @@ public class Game implements Model {
     public void initialize() {
         board = new Board();
         board.put(new Flag(0, PlayerColor.RED), new Position(0, 1));
-        board.put(new General(9, PlayerColor.RED), new Position(3, 2));
+        board.put(new General(9, PlayerColor.RED), new Position(3, 2)); // sdr est-ce normal de donner le rank ici ?
         board.put(new Flag(0, PlayerColor.BLUE), new Position(4, 2));
         board.put(new General(9, PlayerColor.BLUE), new Position(4, 1));
         current.addPiece(new Flag(0, PlayerColor.RED));

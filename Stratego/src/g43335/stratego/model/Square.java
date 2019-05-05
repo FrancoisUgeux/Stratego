@@ -93,6 +93,7 @@ public class Square {
      * @return true if this piece belong to the player
      */
     public boolean isMyOwn(PlayerColor color) {
+        // sdr remplacer première condition par isFree
         return !(piece == null || piece.getColor() != color);
     }
 

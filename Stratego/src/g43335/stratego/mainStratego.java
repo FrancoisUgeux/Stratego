@@ -10,7 +10,8 @@ import g43335.stratego.view.View;
  * @author G43335
  */
 public class mainStratego {
-
+    //sdr la javadoc n'est pas générée sans warning
+    //sdr Une erreur se produit si j'essaie de selectionner un joueur adverse
     public static void main(String[] args) {
         Game game = new Game();
         View view = new View();

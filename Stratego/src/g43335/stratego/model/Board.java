@@ -16,7 +16,7 @@ public class Board {
      * Initialize the board to 5 row and 4 column.
      */
     public Board() {
-        final int ROWS = 5;
+        final int ROWS = 5; // faire des constantes de classes statics
         final int COLUMNS = 4;
         squares = new Square[ROWS][COLUMNS];
         for (int i = 0; i < ROWS; i++) {
@@ -97,7 +97,7 @@ public class Board {
             throw new IllegalArgumentException("out of board");
         }
         return (squares[position.getRow()][position.getColumn()].getPiece()
-                == null);
+                == null); //sdr utiliser isFree
     }
 
     /**
@@ -112,7 +112,7 @@ public class Board {
             throw new IllegalArgumentException("out of board");
         }
         return !(squares[position.getRow()][position.getColumn()]
-                .getPiece() == null
+                .getPiece() == null //sdr utiliser isFree et isMyOwn !
                 || squares[position.getRow()][position.getColumn()]
                         .getPiece().getColor() != color);
     }
@@ -140,7 +140,7 @@ public class Board {
             throw new IllegalArgumentException("out of board");
         }
         if (!isFree(position)) {
-            squares[position.getRow()][position.getColumn()].remove();
+            squares[position.getRow()][position.getColumn()].remove(); //sdr utiliser getPiece
         }
     }
 
