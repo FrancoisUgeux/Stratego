@@ -97,9 +97,7 @@ public class Player {
      * @param piece is the piece to remove.
      */
     public void remove(Piece piece) {
-        if (!pieces.isEmpty()) {
             pieces.remove(piece);
-        }
     }
 
     /**
@@ -109,11 +107,9 @@ public class Player {
      */
     public boolean hasFlag() {
         boolean hasAFlag = false;
-        for (int i = 0; i < getPieces().size(); i++) {
-            if (getPieces().get(i).getRank() == 0) {
+            if (pieces.stream().anyMatch(t -> t.getRank() == 0)) {
                 hasAFlag = true;
             }
-        }
         return hasAFlag;
     }
 }

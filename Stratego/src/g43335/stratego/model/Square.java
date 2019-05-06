@@ -97,7 +97,7 @@ public class Square {
      * @return true if this piece belong to the player
      */
     public boolean isMyOwn(PlayerColor color) {
-        return !(piece == null || piece.getColor() != color);
+        return !(isFree() || piece.getColor() != color);
     }
 
     /**

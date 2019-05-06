@@ -102,8 +102,7 @@ public class Board {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        return (squares[position.getRow()][position.getColumn()].getPiece()
-                == null);
+        return squares[position.getRow()][position.getColumn()].isFree();
     }
 
     /**
@@ -118,10 +117,8 @@ public class Board {
         if (!isInside(position)) {
             throw new IllegalArgumentException("out of board");
         }
-        return !(squares[position.getRow()][position.getColumn()]
-                .getPiece() == null
-                || squares[position.getRow()][position.getColumn()]
-                        .getPiece().getColor() != color);
+        return !(squares[position.getRow()][position.getColumn()].isFree()
+                || !squares[position.getRow()][position.getColumn()].isMyOwn(color));
     }
 
     /**

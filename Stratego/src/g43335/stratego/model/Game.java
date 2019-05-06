@@ -165,6 +165,7 @@ public class Game implements Model {
                     moves.add(new Move(piece, start, firstEnd));
                     if (piece.getNbSteps() == 2 && board.isInside(secondEnd)
                             && piece.canCross(board.getSquare(secondEnd))
+                            && board.isFree(firstEnd)
                             && board.isFree(secondEnd)) {
                         moves.add(new Move(piece, start, secondEnd));
                     }
