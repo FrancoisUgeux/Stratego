@@ -11,6 +11,11 @@ import g43335.stratego.view.View;
  */
 public class mainStratego {
 
+    /**
+     * lead the view, controller and game to create and play a match
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Game game = new Game();
         View view = new View();
