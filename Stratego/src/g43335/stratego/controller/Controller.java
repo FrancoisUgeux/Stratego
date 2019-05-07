@@ -53,29 +53,33 @@ public class Controller {
             view.displayBoard(game.getBoard(), game.getCurrent());
             Player current = game.getCurrent();
             view.displayCurrentPlayer(current);
-            String command = view.askCommand().toLowerCase();
-            Pattern p = Pattern.compile("(\\d)(\\s)(\\d)");
-            Matcher m = p.matcher(command);
-
-            if (command.matches("quit")) {
-                view.displayOver();
-                view.quit();
-                System.exit(0);
-            } else if (command.matches("select\\s\\d\\s\\d"
-                    + "|select\\s\\d\\s\\d\\s")) {
-                m.find();
-                int row = Integer.parseInt(m.group(1));
-                int column = Integer.parseInt(m.group(3));
-                game.select(row, column);
-                view.displaySelectedPiece(game.getSelected());
-                command = view.askCommand();
-                if (command.matches("moves|move")) {
-                    if (game.getSelected() == null) {
-                        view.displayError("You must select a piece before");
+            boolean endTurn = false;
+            while (!endTurn) {
+                String command = view.askCommand().toLowerCase().trim();
+                Pattern p = Pattern.compile("(\\d)(\\s)(\\d)");
+                Matcher m = p.matcher(command);
+                if (command.matches("quit")) {
+                    view.displayOver();
+                    view.quit();
+                    System.exit(0);
+                } else if (command.matches("select\\s\\d\\s\\d")) {
+                    try {
+                        m.find();
+                        int row = Integer.parseInt(m.group(1));
+                        int column = Integer.parseInt(m.group(3));
+                        game.select(row, column);
+                        view.displaySelectedPiece(game.getSelected());
+                    } catch (Exception e) {
+                        view.displayError(" invalid selection ");
                     }
-                    view.displayMoves(game.getMoves());
-                    command = view.askCommand();
-                    if (command.matches("apply\\s\\d|apply\\s\\d\\s")) {
+                } else if (command.matches("moves|move")) {
+                    try {
+                        view.displayMoves(game.getMoves());
+                    } catch (Exception e) {
+                        view.displayError(" You must select a piece before ");
+                    }
+                } else if (command.matches("apply\\s\\d")) {
+                    try {
                         Pattern p1 = Pattern.compile("\\d");
                         Matcher m1 = p1.matcher(command);
                         m1.find();
@@ -85,17 +89,20 @@ public class Controller {
                             System.out.println(selectedMove);
                             Move move = game.getMoves().get(selectedMove);
                             game.apply(move);
+                            endTurn = true;
                         }
+                    } catch (Exception e) {
+                        view.displayError(" Invalid command ");
                     }
+                } else {
+                    view.displayError(" Wrong command please try again ");
+                    view.displayHelp();
                 }
 
-            } else {
-                view.displayError(" Wrong command please try again ");
-                view.displayHelp();
             }
-        }
-        if (game.isOver()) {
-            view.displayOver(game.getWinners());
+            if (game.isOver()) {
+                view.displayOver(game.getWinners());
+            }
         }
     }
 }
