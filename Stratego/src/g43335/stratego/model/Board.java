@@ -11,14 +11,14 @@ import java.util.List;
 public class Board {
 
     private final Square[][] squares;
+    private static final int ROWS = 6;
+    private static final int COLUMNS = 5;
 
     /**
      * Initialize the board to 6 row and 5 column. With a lake in
      * (2,1)(2,2)(2,3) and the others square in land.
      */
     public Board() {
-        final int ROWS = 6;
-        final int COLUMNS = 5;
         squares = new Square[ROWS][COLUMNS];
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {

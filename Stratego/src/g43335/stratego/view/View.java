@@ -55,13 +55,13 @@ public class View {
      */
     public void displayHelp() {
         System.out.println("available command :");
-        System.out.println("quit: leave the game");
-        System.out.println("select row column: select a piece "
-                + "at the requested position ");
-        System.out.println("moves: display the moves available "
-                + "for the selected piece");
-        System.out.println("apply movesNumber: move the piece "
-                + "with the selected move");
+        System.out.println(Color.PURPLE + "quit: " + Color.RESET + "leave the game");
+        System.out.println(Color.PURPLE + "select row column: "
+                + Color.RESET + "select a piece at the requested position ");
+        System.out.println(Color.PURPLE + "moves: " + Color.RESET
+                + "display the moves available for the selected piece");
+        System.out.println(Color.PURPLE + "apply movesNumber: " + Color.RESET
+                + "move the piece with the selected move");
     }
 
     /**
@@ -202,48 +202,48 @@ public class View {
     public void displaySelectedFullName(Piece piece) {
         switch (piece.getRank()) {
             case 0:
-                    System.out.print("Flag");
+                System.out.print("Flag");
                 break;
             case 1:
-                    System.out.print("Spy");
+                System.out.print("Spy");
                 break;
             case 2:
-                    System.out.print("Scout");
+                System.out.print("Scout");
                 break;
             case 3:
-                    System.out.print("Deminer");
+                System.out.print("Deminer");
                 break;
             case 4:
-                    System.out.print("Sergeant");
+                System.out.print("Sergeant");
                 break;
             case 5:
-                    System.out.print("Lieutenant");
+                System.out.print("Lieutenant");
                 break;
             case 6:
-                    System.out.print("Captain");
+                System.out.print("Captain");
                 break;
             case 7:
-                    System.out.print("Commander");
+                System.out.print("Commander");
                 break;
             case 8:
-                    System.out.print("Colonel");
+                System.out.print("Colonel");
                 break;
             case 9:
-                    System.out.print("General");
+                System.out.print("General");
                 break;
             case 10:
-                    System.out.print("Marshal");
+                System.out.print("Marshal");
                 break;
             case 11:
-                    System.out.print("Bomb");
+                System.out.print("Bomb");
                 break;
         }
     }
-    
-    public void displaySelectedColor(Piece piece){
-        if(piece.getColor() == BLUE){
+
+    public void displaySelectedColor(Piece piece) {
+        if (piece.getColor() == BLUE) {
             System.out.print("Blue ");
-        }else{
+        } else {
             System.out.print("Red ");
         }
     }
