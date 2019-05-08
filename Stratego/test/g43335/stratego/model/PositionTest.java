@@ -79,7 +79,7 @@ public class PositionTest {
     public void testNext() {
         System.out.println("testNext");
         Position instance = new Position(3, 2);
-        Position expResult = new Position(4,2);
+        Position expResult = new Position(4, 2);
         Position result = instance.next(Direction.DOWN);
         assertEquals(expResult, result);
     }

@@ -1,5 +1,6 @@
 package g43335.stratego.model;
 
+import g43335.stratego.model.pieces.Flag;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -107,11 +108,9 @@ public class Player {
      */
     public boolean hasFlag() {
         boolean hasAFlag = false;
-        for (Piece piece : pieces) {
-            if (piece.getRank() == 0) {
+            if (pieces.contains(new Flag(color))) {
                 hasAFlag = true;
             }
-        }
         return hasAFlag;
     }
 }
