@@ -146,7 +146,7 @@ public class Board {
             throw new IllegalArgumentException("out of board");
         }
         if (!isFree(position)) {
-            squares[position.getRow()][position.getColumn()].remove();
+            getSquare(position).remove();
         }
     }
 
