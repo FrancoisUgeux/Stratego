@@ -75,4 +75,6 @@ public interface Model {
      * @return the list of winner(s).
      */
     List<Player> getWinners();
+    
+    void cancelMove();
 }

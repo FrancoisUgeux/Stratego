@@ -12,6 +12,7 @@ public class Move {
     private Piece piece;
     private Position start;
     private Position end;
+    private Piece opponent;
 
     /**
      * Initialize the differents attributes.
@@ -21,13 +22,27 @@ public class Move {
      * @param end is the point of arrival of the piece.
      * @throws NullPointerException if an attribute is null.
      */
-    public Move(Piece piece, Position start, Position end) {
+//    public Move(Piece piece, Position start, Position end) {
+//        if (piece == null || start == null || end == null) {
+//            throw new NullPointerException("Attributes cannot be null");
+//        }
+//        this.piece = piece;
+//        this.start = start;
+//        this.end = end;
+//    }
+
+    public Move(Piece piece, Position start, Position end, Piece opponent) {
         if (piece == null || start == null || end == null) {
             throw new NullPointerException("Attributes cannot be null");
         }
         this.piece = piece;
         this.start = start;
         this.end = end;
+        this.opponent = opponent;
+
+        if (opponent == null) {
+            this.opponent = null;
+        }
     }
 
     /**
@@ -101,4 +116,11 @@ public class Move {
         return end;
     }
 
+    public Piece getOpponent() {
+        return opponent;
+    }
+
+    public boolean hasOpponent() {
+        return opponent != null;
+    }
 }

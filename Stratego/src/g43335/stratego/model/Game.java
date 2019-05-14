@@ -17,6 +17,7 @@ public class Game implements Model {
     private Player opponent;
     private Board board;
     private Position selected;
+    private Moves moves;
 
     /**
      * Initialize the 2 players and their colors.
@@ -27,7 +28,7 @@ public class Game implements Model {
     }
 
     /**
-     * Initialize the stratego game with a default board.
+     * Initialize the Stratego game with a default board.
      */
     @Override
     public void initialize() {
@@ -162,12 +163,12 @@ public class Game implements Model {
                 if (board.isInside(firstEnd)
                         && piece.canCross(board.getSquare(firstEnd))
                         && !board.isMyOwn(firstEnd, current.getColor())) {
-                    moves.add(new Move(piece, start, firstEnd));
+                    moves.add(new Move(piece, start, firstEnd, board.getPiece(firstEnd)));
                     if (piece.getNbSteps() == 2 && board.isInside(secondEnd)
                             && piece.canCross(board.getSquare(secondEnd))
                             && board.isFree(firstEnd)
                             && board.isFree(secondEnd)) {
-                        moves.add(new Move(piece, start, secondEnd));
+                        moves.add(new Move(piece, start, secondEnd, board.getPiece(firstEnd)));
                     }
                 }
             }
@@ -187,6 +188,7 @@ public class Game implements Model {
             throw new NullPointerException("Invalid move");
         }
         Piece assailant = move.getPiece();
+        Position startAssailant = move.getStart();
         Position target = move.getEnd();
         Piece attacked = board.getSquare(target).getPiece();
         if (board.isFree(target)) {
@@ -202,8 +204,8 @@ public class Game implements Model {
         } else {
             current.remove(assailant);
         }
+        moves.add(new Move(assailant, startAssailant, target, attacked));
         board.remove(move.getStart());
-        swapPlayers();
     }
 
     /**
@@ -276,5 +278,31 @@ public class Game implements Model {
             winner.add(current);
         }
         return winner;
+    }
+
+    public void confirmMove() {
+        swapPlayers();
+    }
+
+    public void cancelMove() {
+        Move lastMove = moves.getHistory().get(moves.getHistory().size() - 1);
+        Piece assailant = lastMove.getPiece();
+        Position startAssailant = lastMove.getStart();
+        Position target = lastMove.getEnd();
+        Piece attacked = board.getSquare(target).getPiece();
+        board.put(assailant, startAssailant);
+        if (lastMove.getOpponent() == null) {
+            board.remove(target);
+        }
+        if (assailant.isStronger(attacked)) {
+            board.put(attacked, target);
+            opponent.addPiece(attacked);
+        } else if (assailant.hasSameRank(attacked)) {
+            board.put(attacked, target);
+            current.addPiece(assailant);
+            opponent.addPiece(attacked);
+        } else {
+            current.addPiece(assailant);
+        }
     }
 }

@@ -89,7 +89,13 @@ public class Controller {
                             System.out.println(selectedMove);
                             Move move = game.getMoves().get(selectedMove);
                             game.apply(move);
-                            endTurn = true;
+                            System.out.println("Confirmez vous le dernier déplacement ? (o/n)");
+                            command = view.askCommand().toLowerCase().trim();
+                            if (command.matches("o|n")) {
+                                endTurn = true;
+                            } else {
+                                game.cancelMove();
+                            }
                         }
                     } catch (Exception e) {
                         view.displayError(" Invalid command ");
